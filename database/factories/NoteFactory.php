@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Player;
 use App\Models\PlayerSeason;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
