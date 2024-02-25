@@ -8,34 +8,41 @@ use Illuminate\Http\Request;
 
 class PlayerSeasonController extends Controller
 {
-    public function index()
+    public function index(PlayerSeason $playerseason)
     {
         return inertia('Player/Index',
             [
-                'players' => PlayerSeason::with('user', 'guild')->get(),
+                'players' => $playerseason::with('user', 'guild')->get()
             ]);
     }
 
-    public function show($user_id)
+    public function store(Request $request)
     {
-        return inertia('Player/Show',
+        PlayerSeason::create($request->all());
+
+        return redirect()->route('player.index')
+            ->with('success', 'Utworzono konto');
+    }
+
+    public function update(Request $request, PlayerSeason $playerseason)
+    {
+        $playerseason->update(
+            $request->validate([
+                'name' => 'required',
+                'damage' => 'required|integer|min:0'
+            ])
+        );
+        return redirect()->route('player.index')
+            ->with('success', 'aktulizowano');
+    }
+
+    public function edit(Request $request, $player_id)
+    {
+        $player = PlayerSeason::with('user', 'guild')->find($player_id);
+        return inertia('Player/Edit',
             [
-                'user' => User::find($user_id),
-                'player' => Player::where('user_id', $user_id)->first(),
-            ]);
-    }
-
-    public function update(\http\Env\Request $request, $id)
-    {
-        $player = Player::findOrFail($id);
-
-        $this->authorize('update', $player);
-        $player->update([
-            'damage' => $request->input('damage'),
-            'updated_by' => Auth::id(),
-        ]);
-
-        return redirect()->route('players.index');
+                'player' => $player
+            ])->with('success', 'aktulizowano');
     }
 }
 
