@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class PlayerSeasonController extends Controller
 {
-    public function index(PlayerSeason $playerseason)
+    public function index(PlayerSeason $playerSeason)
     {
         return inertia('Player/Index',
             [
-                'players' => $playerseason::with('user', 'guild')->get()
+                'players' => $playerSeason::with('user', 'guild')->get()
             ]);
     }
 
@@ -24,17 +24,26 @@ class PlayerSeasonController extends Controller
             ->with('success', 'Utworzono konto');
     }
 
-    public function update(Request $request, PlayerSeason $playerseason)
+    public function update(Request $request, PlayerSeason $playerSeason)
     {
-        $playerseason->update(
-            $request->validate([
-                'name' => 'required',
-                'damage' => 'required|integer|min:0'
-            ])
-        );
-        return redirect()->route('player.index')
-            ->with('success', 'aktulizowano');
+
+        $validatedData = $request->validate([
+            'name' => 'min:3|max:32|string',
+            'damage' => 'required|integer|min:0'
+        ]);
+
+        $affected = $playerSeason->update($validatedData);
+
+        if ($affected) {
+            return redirect()->route('player.index')
+                ->with('success', 'player has been updated.');
+        } else {
+            return dd($playerSeason);
+        }
     }
+
+    //Gracz został zaktualizowany.
+    //Nie udało się zaktualizować gracza.
 
     public function edit(Request $request, $player_id)
     {
@@ -42,7 +51,7 @@ class PlayerSeasonController extends Controller
         return inertia('Player/Edit',
             [
                 'player' => $player
-            ])->with('success', 'aktulizowano');
+            ]);
     }
 }
 
