@@ -11,7 +11,8 @@ class PlayerSeason extends Model
     use HasFactory;
 
 //    protected $table = 'player_seasons';
-    protected $fillable = ['player_id', 'season_id', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
+
+    protected $fillable = ['player_id', 'season_id', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by', 'name'];
 
     public function season(): BelongsTo
     {

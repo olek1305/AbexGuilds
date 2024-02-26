@@ -10,7 +10,7 @@
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th>Username</th>
-                                        <th>Dama ge</th>
+                                        <th>Damage</th>
                                         <th>Czy jest obserwatorem?</th>
                                         <th>Czy jest Gwiazda?</th>
                                         <th>Gildia</th>
