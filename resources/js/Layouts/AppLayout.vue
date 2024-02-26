@@ -297,12 +297,9 @@ const flashError = computed(
                         {{ flashSuccess }}
                     </div>
 
-                <div v-if="flashError" class="p-1 mb-4 border rounded-md shadow-sm border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900 dark:text-white">
-                    {{ flashError }}
-                </div>
-
-                    <slot>Default</slot>
-
+                    <div v-else-if="flashError" class="p-1 mb-4 border rounded-md shadow-sm border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900 dark:text-white">
+                        {{ flashError }}
+                    </div>
                 <slot />
             </main>
         </div>
