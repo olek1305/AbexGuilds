@@ -24,22 +24,24 @@ class PlayerSeasonController extends Controller
             ->with('success', 'Utworzono konto');
     }
 
-    public function update(Request $request, PlayerSeason $playerSeason)
+    public function update(Request $request, $player_id)
     {
+        $playerSeason = PlayerSeason::findOrFail($player_id);
 
         $validatedData = $request->validate([
             'name' => 'min:3|max:32|string',
-            'damage' => 'required|integer|min:0'
+            'damage' => 'required|integer|min:0|max:100000000'
         ]);
+
+        if (isset($validatedData['name'])) {
+            $playerSeason->user()->update(['name' => $validatedData['name']]);
+            unset($validatedData['name']);
+        }
 
         $affected = $playerSeason->update($validatedData);
 
-        if ($affected) {
-            return redirect()->route('player.index')
-                ->with('success', 'player has been updated.');
-        } else {
-            return dd($playerSeason);
-        }
+        return redirect()->route('player.index')
+            ->with('success', 'Player has been updated.');
     }
 
     //Gracz został zaktualizowany.
@@ -47,10 +49,10 @@ class PlayerSeasonController extends Controller
 
     public function edit(Request $request, $player_id)
     {
-        $player = PlayerSeason::with('user', 'guild')->find($player_id);
+        $playerSeason = PlayerSeason::with('user', 'guild')->find($player_id);
         return inertia('Player/Edit',
             [
-                'player' => $player
+                'player' => $playerSeason
             ]);
     }
 }
