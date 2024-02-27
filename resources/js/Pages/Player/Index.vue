@@ -6,9 +6,9 @@
                     <div>
                         <div class="">
                             <div class="relative overflow-x-auto">
-                                <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <table class="table-auto text-2xl w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
+                                    <tr class="text-xl">
                                         <th>Username</th>
                                         <th>Damage</th>
                                         <th>Czy jest obserwatorem?</th>

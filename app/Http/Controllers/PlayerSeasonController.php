@@ -24,28 +24,40 @@ class PlayerSeasonController extends Controller
             ->with('success', 'Utworzono konto');
     }
 
-    public function update(Request $request, $player_id)
+//    public function update(Request $request, $player_id)
+//    {
+//        $playerSeason = PlayerSeason::findOrFail($player_id);
+//
+//        $validatedData = $request->validate([
+//            'name' => 'min:3|max:32|string',
+//            'is_observer' => 'required|boolean',
+//            'is_star' => 'required|boolean',
+//            'damage' => 'required|integer|min:0|max:100000000'
+//        ]);
+//
+//        if (isset($validatedData['name'])) {
+//            $playerSeason->user()->update(['name' => $validatedData['name']]);
+//            unset($validatedData['name']);
+//        }
+//
+//        $affected = $playerSeason->update($validatedData);
+//
+//        return redirect()->route('player.index')
+//            ->with('success', 'Gracz został zaktualizowany');
+//    }
+
+    public function update(Request $request, PlayerSeason $player)
     {
-        $playerSeason = PlayerSeason::findOrFail($player_id);
-
-        $validatedData = $request->validate([
-            'name' => 'min:3|max:32|string',
-            'damage' => 'required|integer|min:0|max:100000000'
-        ]);
-
-        if (isset($validatedData['name'])) {
-            $playerSeason->user()->update(['name' => $validatedData['name']]);
-            unset($validatedData['name']);
-        }
-
-        $affected = $playerSeason->update($validatedData);
-
+        $player->update(
+            $request->validate([
+                'damage' => 'required|integer|min:0',
+                'is_star' => 'required|boolean',
+                'is_observer' => 'required|boolean'
+            ])
+        );
         return redirect()->route('player.index')
-            ->with('success', 'Player has been updated.');
+            ->with('success', 'gracz zaktualizowany');
     }
-
-    //Gracz został zaktualizowany.
-    //Nie udało się zaktualizować gracza.
 
     public function edit(Request $request, $player_id)
     {
@@ -54,6 +66,11 @@ class PlayerSeasonController extends Controller
             [
                 'player' => $playerSeason
             ]);
+    }
+
+    public function destroy(PlayerSeason $playerSeason)
+    {
+
     }
 }
 

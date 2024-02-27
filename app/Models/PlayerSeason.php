@@ -12,7 +12,7 @@ class PlayerSeason extends Model
 
 //    protected $table = 'player_seasons';
 
-    protected $fillable = ['player_id', 'season_id', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by', 'name'];
+    protected $fillable = ['player_id', 'season_id', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
 
     public function season(): BelongsTo
     {
