@@ -1,12 +1,17 @@
 <template>
     <AppLayout title="Edit Player">
         <div class="grid">
-            <div class="mx-auto p-2 border-2 border-sky-500 rounded-md text inline-block ">
+            <div class="mx-auto p-2 border-2 border-sky-500 rounded-md text inline-block m-1">
                 <p>Info player:</p>
                 <p>Username: {{ player.user.name }}</p>
                 <p>Guild: {{ player.guild.name }}</p>
                 <p>ID user: {{ player.user.id }}</p>
                 <p>ID player: {{ player.id }}</p>
+            </div>
+            <div class="mx-auto p-2 border-2 border-sky-500 rounded-md text inline-block m-1">
+                <p>Wartosc:</p>
+                <p>1 - Tak</p>
+                <p>0 - Nie</p>
             </div>
         </div>
         <form class="grid grid-cols-subgrid justify-center" @submit.prevent="update" >
@@ -40,14 +45,11 @@
                 </div>
             </div>
         </form>
-        <div class="grid text justify-center">
-            <button class="btn mt-3"><Link :href="route('player.index')">Cancel</Link></button>
-        </div>
     </AppLayout>
 </template>
 
 <script setup>
-import { Link, router, useForm } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 import { route } from "ziggy-js";
 import AppLayout from "@/Layouts/AppLayout.vue";
 
@@ -63,9 +65,5 @@ const form = useForm({
 
 const update = () => {
     form.put(route('player.update', { player: props.player.id }))
-}
-
-const destroy = () => {
-    router.delete(route('player.destroy', { player: props.player.id }))
 }
 </script>

@@ -68,9 +68,11 @@ class PlayerSeasonController extends Controller
             ]);
     }
 
-    public function destroy(PlayerSeason $playerSeason)
+    public function destroy(PlayerSeason $player)
     {
-
+        $player->deleteOrFail();
+        return redirect()->route('player.index')
+            ->with('error', 'gracz zostal usuniety');
     }
 }
 
