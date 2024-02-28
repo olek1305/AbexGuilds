@@ -21,17 +21,17 @@
 
                 <div>
                     <label class="label">Obserwator</label>
-                    <input v-model.number="form.observer" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.observer">
-                        {{ form.errors.observer }}
+                    <input v-model.number="form.is_observer" type="text" class="text-center shadow-md text-black" />
+                    <div v-if="form.errors.is_observer">
+                        {{ form.errors.is_observer }}
                     </div>
                 </div>
 
                 <div>
                     <label class="label">Gwiazda</label>
-                    <input v-model.number="form.star" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.star">
-                        {{ form.errors.star }}
+                    <input v-model.number="form.is_star" type="text" class="text-center shadow-md text-black" />
+                    <div v-if="form.errors.is_star">
+                        {{ form.errors.is_star }}
                     </div>
                 </div>
 
@@ -57,8 +57,8 @@ const props = defineProps({
 
 const form = useForm({
     damage: props.player.damage,
-    star: props.player.is_star,
-    observer: props.player.is_observer,
+    is_star: props.player.is_star,
+    is_observer: props.player.is_observer,
 })
 
 const update = () => {

@@ -51,8 +51,8 @@ class PlayerSeasonController extends Controller
         $player->update(
             $request->validate([
                 'damage' => 'required|integer|min:0',
-                'is_star' => 'required|boolean',
-                'is_observer' => 'required|boolean'
+                'is_star' => 'boolean',
+                'is_observer' => 'boolean',
             ])
         );
         return redirect()->route('player.index')
