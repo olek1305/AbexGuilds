@@ -28,4 +28,9 @@ class PlayerSeason extends Model
     {
         return $this->belongsTo(Guild::class);
     }
+
+    public function note(): BelongsTo
+    {
+        return $this->belongsTo(Note::class);
+    }
 }
