@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class PlayerSeasonController extends Controller
 {
-    public function index(PlayerSeason $playerSeason)
+    public function index(PlayerSeason $player)
     {
         return inertia('Player/Index',
             [
-                'players' => $playerSeason::with('user', 'guild')->get()
+                'players' => $player::with('user', 'guild')->get()
             ]);
     }
 
