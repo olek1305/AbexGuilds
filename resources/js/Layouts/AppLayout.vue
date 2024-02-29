@@ -144,6 +144,9 @@ const flashError = computed(
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('player.index')" :active="route().current('player.index')">
+                            Player
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
