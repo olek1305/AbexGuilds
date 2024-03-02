@@ -3,25 +3,24 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 dark:text-white">
-                    <div>
-                        <div class="overflow-x-auto">
-                            <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr class="text-xl">
-                                    <th v-for="(column, index) in columns" :key="index">
-                                        {{ column }}
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <Player
-                                        v-for="(player, index) in players"
-                                        :key="player.id" :player="player"
-                                        :columnIndex="index"
-                                    />
-                                </tbody>
-                            </table>
-                        </div>
+                    <PlayerFilters :filters="filters"/>
+                    <div class="overflow-x-auto">
+                        <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr class="text-xl">
+                                <th v-for="(column, index) in columns" :key="index">
+                                    {{ column }}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <Player
+                                    v-for="(player, index) in players.data"
+                                    :key="player.id" :player="player"
+                                    :columnIndex="index"
+                                />
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -32,10 +31,18 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Player from "@/Pages/Player/Components/Player.vue";
+import PlayerFilters from "@/Pages/Player/Components/PlayerFilters.vue";
 
-const columns = ['Username', 'Damage', 'Czy jest obserwatorem?', 'Czy jest Gwiazda?', 'Gildia', 'Edit', 'Delete'];
+const columns = ['Username', 'Damage', 'Obser?', 'Gwiazda?', 'Gildia', 'Edit', 'Delete'];
 
-defineProps({
-    players: Array
+const props = defineProps({
+    players: Object,
+    filters: Object
 })
 </script>
+
+<style>
+    th {
+        min-width: 130px; /* Minimalna szerokość kolumny */
+    }
+</style>

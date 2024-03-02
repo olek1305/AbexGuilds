@@ -6,13 +6,27 @@ use App\Models\PlayerSeason;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class PlayerSeasonController extends Controller
 {
-    public function index(PlayerSeason $player)
+    public function index(Request $request)
     {
+        $filters = $request->only([
+           'guild_id', 'damageFrom', 'damageTo', 'season_id'
+        ]);
+
+        $players = PlayerSeason::query()
+            ->with('user', 'guild')
+            ->latestGuildId()
+            ->filter($filters)
+            ->paginate(70)
+            ->withQueryString();
+
         return inertia('Player/Index',
             [
-                'players' => $player::with('user', 'guild')->get()
+//                'players' => $player::with('user', 'guild')->orderByDesc('guild_id')->get(),
+                'players' => $players,
+                'filters' => $filters
             ]);
     }
 

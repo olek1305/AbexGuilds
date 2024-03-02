@@ -13,3 +13,7 @@
 .text {
     @apply text-black dark:text-blue-100 text-2xl
 }
+
+.input {
+    @apply dark:text-black
+}
