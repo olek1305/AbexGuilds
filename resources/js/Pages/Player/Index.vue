@@ -14,7 +14,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <Player v-for="(player, index) in players" :key="player.id" :player="player" :columnIndex="index"/>
+                                    <Player
+                                        v-for="(player, index) in players"
+                                        :key="player.id" :player="player"
+                                        :columnIndex="index"
+                                    />
                                 </tbody>
                             </table>
                         </div>
