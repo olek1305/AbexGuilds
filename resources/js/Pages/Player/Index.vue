@@ -23,6 +23,9 @@
                         </table>
                     </div>
                 </div>
+                <div v-if="players.data.length" class="w-full flex justify-center mt-4 mb-4 dark:text-gray-400">
+                    <Pagination :links="players.links"/>
+                </div>
             </div>
         </div>
     </AppLayout>
@@ -32,6 +35,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Player from "@/Pages/Player/Components/Player.vue";
 import PlayerFilters from "@/Pages/Player/Components/PlayerFilters.vue";
+import Pagination from "@/Pages/Components/UI/Pagination.vue";
 
 const columns = ['Username', 'Damage', 'Obser?', 'Gwiazda?', 'Gildia', 'Edit', 'Delete'];
 
