@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guild;
 use App\Models\PlayerSeason;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,35 +31,31 @@ class PlayerSeasonController extends Controller
             ]);
     }
 
-    public function store(Request $request)
+    public function create(PlayerSeason $player)
     {
-        PlayerSeason::create($request->all());
-
-        return redirect()->route('player.index')
-            ->with('success', 'Utworzono konto');
+        $users = User::all();
+        $guilds = Guild::all();
+        return inertia('Player/Create', [
+            'player' => $player,
+            'users' => $users,
+            'guilds' => $guilds
+        ]);
     }
 
-//    public function update(Request $request, $player_id)
-//    {
-//        $playerSeason = PlayerSeason::findOrFail($player_id);
-//
-//        $validatedData = $request->validate([
-//            'name' => 'min:3|max:32|string',
-//            'is_observer' => 'required|boolean',
-//            'is_star' => 'required|boolean',
-//            'damage' => 'required|integer|min:0|max:100000000'
-//        ]);
-//
-//        if (isset($validatedData['name'])) {
-//            $playerSeason->user()->update(['name' => $validatedData['name']]);
-//            unset($validatedData['name']);
-//        }
-//
-//        $affected = $playerSeason->update($validatedData);
-//
-//        return redirect()->route('player.index')
-//            ->with('success', 'Gracz został zaktualizowany');
-//    }
+    public function store(Request $request)
+    {
+        PlayerSeason::create($request->validate([
+            'player_id' => 'required',
+            'damage' => 'nullable',
+            'is_star' => 'nullable',
+            'is_observer' => 'nullable',
+            'season_id' => 'required',
+            'guild_id' => 'required'
+        ]));
+
+        return redirect()->route('player.index')
+            ->with('success', 'Stworzony player');
+    }
 
     public function update(Request $request, PlayerSeason $player)
     {
