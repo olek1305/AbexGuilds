@@ -1,61 +1,63 @@
 <template>
     <AppLayout title="Create Player">
-        <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create" >
+        <form class="max-w-md mx-auto" @submit.prevent="create">
             <div class="text-center text">
-                <div>
-                    <label class="label">Nick</label>
-                    <select v-model="selectedNickId" class="text-center shadow-md text-black">
-                        <option v-for="user in sortedUsers" :value="user.id">{{ user.name }}</option>
-                    </select>
-                    <div v-if="form.errors.player_id">
-                        {{ form.errors.player_id }}
+                <div class="text-center">
+                    <div class="mb-4">
+                        <label class="label">Nick</label>
+                        <select v-model="selectedNickId" class="select-field input">
+                            <option class="input" v-for="user in sortedUsers" :value="user.id">{{ user.name }}</option>
+                        </select>
+                        <div v-if="form.errors.player_id" class="error-msg">
+                            {{ form.errors.player_id }}
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label class="label">Damage</label>
-                    <input v-model.number="form.damage" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.damage">
-                        {{ form.errors.damage }}
+                    <div class="mb-4">
+                        <label class="label">Damage</label>
+                        <input v-model.number="form.damage" type="text" class="input-field input" />
+                        <div v-if="form.errors.damage" class="error-msg">
+                            {{ form.errors.damage }}
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label class="label">Obserwator</label>
-                    <input v-model.number="form.is_observer" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.is_observer">
-                        {{ form.errors.is_observer }}
+                    <div class="mb-4">
+                        <label class="label">Obserwator</label>
+                        <input v-model.number="form.is_observer" type="text" class="input-field input" />
+                        <div v-if="form.errors.is_observer" class="error-msg">
+                            {{ form.errors.is_observer }}
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label class="label">Gwiazda</label>
-                    <input v-model.number="form.is_star" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.is_star">
-                        {{ form.errors.is_star }}
+                    <div class="mb-4">
+                        <label class="label">Gwiazda</label>
+                        <input v-model.number="form.is_star" type="text" class="input-field input" />
+                        <div v-if="form.errors.is_star" class="error-msg">
+                            {{ form.errors.is_star }}
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label class="label">Season</label>
-                    <input v-model.number="form.season_id" type="text" class="text-center shadow-md text-black" />
-                    <div v-if="form.errors.season_id">
-                        {{ form.errors.season_id }}
+                    <div class="mb-4">
+                        <label class="label">Season</label>
+                        <input v-model.number="form.season_id" type="text" class="input-field input" />
+                        <div v-if="form.errors.season_id" class="error-msg">
+                            {{ form.errors.season_id }}
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <label class="label">Gildia</label>
-                    <select v-model="selectedGuildId" class="text-center shadow-md text-black">
-                        <option v-for="guild in sortedGuilds" :value="guild.id">{{ guild.name }}</option>
-                    </select>
-                    <div v-if="form.errors.guild_id">
-                        {{ form.errors.guild_id }}
+                    <div class="mb-4">
+                        <label class="label">Gildia</label>
+                        <select v-model="selectedGuildId" class="input-field input">
+                            <option v-for="guild in sortedGuilds" :value="guild.id">{{ guild.name }}</option>
+                        </select>
+                        <div v-if="form.errors.guild_id" class="error-msg">
+                            {{ form.errors.guild_id }}
+                        </div>
                     </div>
-                </div>
 
-                <div class="grid">
-                    <button class="btn mt-3" type="submit">Create</button>
+                    <div>
+                        <button class="btn mt-3 w-full" type="submit">Create</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -103,3 +105,23 @@ const sortedGuilds = computed(() => {
 })
 
 </script>
+
+<style>
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-field,
+.select-field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.error-msg {
+    color: red;
+    margin-top: 0.25rem;
+}
+</style>
