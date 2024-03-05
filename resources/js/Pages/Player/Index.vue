@@ -2,7 +2,11 @@
     <AppLayout title="Dashboard">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 dark:text-white">
+                <div class="bg-white dark:bg-gray-800 dark:text-white pt-2">
+                    <div class="flex justify-center mb-2">
+                        <Link class="flex btn justify-center" :href="route('player.create')">Utwórz gracza</Link>
+                    </div>
+                    <hr>
                     <PlayerFilters :filters="filters"/>
                     <div class="overflow-x-auto">
                         <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
@@ -36,6 +40,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import Player from "@/Pages/Player/Components/Player.vue";
 import PlayerFilters from "@/Pages/Player/Components/PlayerFilters.vue";
 import Pagination from "@/Pages/Components/UI/Pagination.vue";
+import {route} from "ziggy-js";
+import {Link} from "@inertiajs/vue3";
 
 const columns = ['Username', 'Damage', 'Obser?', 'Gwiazda?', 'Gildia', 'Edit', 'Delete'];
 
