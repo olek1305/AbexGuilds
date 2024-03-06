@@ -14,7 +14,7 @@
     </tr>
 </template>
 <script setup>
-import { router} from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 import { route } from "ziggy-js";
 
 const props = defineProps({
