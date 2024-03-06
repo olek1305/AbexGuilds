@@ -33,6 +33,21 @@
             return $query->orderByDesc('guild_id');
         }
 
+        public function scopeLatestIsStar(Builder $query): Builder
+        {
+            return $query->orderByDesc('is_star');
+        }
+
+        public function scopeLatestDamage(Builder $query): Builder
+        {
+            return $query->orderByDesc('damage');
+        }
+
+        public function scopeFirstIsObserver(Builder $query): Builder
+        {
+            return $query->orderBy('is_observer');
+        }
+
         public function scopeFilter(Builder $query, array $filters): Builder
         {
             return $query

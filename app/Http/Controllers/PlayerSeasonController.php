@@ -16,9 +16,14 @@ class PlayerSeasonController extends Controller
            'guild_id', 'damageFrom', 'damageTo', 'season_id'
         ]);
 
+        $guilds = Guild::all();
+
         $players = PlayerSeason::query()
             ->with('user', 'guild')
             ->latestGuildId()
+            ->firstIsObserver()
+            ->latestIsStar()
+            ->latestDamage()
             ->filter($filters)
             ->paginate(70)
             ->withQueryString();
@@ -27,7 +32,8 @@ class PlayerSeasonController extends Controller
             [
 //                'players' => $player::with('user', 'guild')->orderByDesc('guild_id')->get(),
                 'players' => $players,
-                'filters' => $filters
+                'filters' => $filters,
+                'guilds' => $guilds
             ]);
     }
 

@@ -8,13 +8,15 @@
         </div>
         <div class="mb-4 sm:mb-0 sm:mr-2">
             <select v-model.number="filterForm.guild_id" class="input">
-                <option :value="null">Nazwa Gildia</option>
-                <option v-for="(name, index) in guilds" :key="index" :value="index">{{ name }}</option>
+
+                <option :value="null" hidden>Nazwa Gildia</option>
+                <option v-for="(guild, index) in guilds" :key="index" :value="guild.id">{{ guild.name }}</option>
             </select>
         </div>
+
         <div class="mb-4 sm:mb-0 sm:mr-2">
             <select v-model.number="filterForm.season_id" class="input">
-                <option :value="null">season</option>
+                <option :value="null" hidden>season</option>
                 <option v-for="n in 12" :key="n" :value="n">{{ n }}</option>
             </select>
         </div>
@@ -38,7 +40,8 @@ form {
 import { useForm } from "@inertiajs/vue3";
 
 const props = defineProps({
-    filters: Object
+    filters: Object,
+    guilds: Object
 })
 
 const filterForm = useForm({
@@ -65,10 +68,4 @@ const clear = () => {
     filterForm.season_id = null
     filter()
 }
-
-const guilds = {
-    1: 'Devour Biali',
-    2: 'Devour Fioletowy',
-    3: 'Devour Zolci'
-};
 </script>
