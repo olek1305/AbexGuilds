@@ -30,7 +30,6 @@ class PlayerSeasonController extends Controller
 
         return inertia('Player/Index',
             [
-//                'players' => $player::with('user', 'guild')->orderByDesc('guild_id')->get(),
                 'players' => $players,
                 'filters' => $filters,
                 'guilds' => $guilds
