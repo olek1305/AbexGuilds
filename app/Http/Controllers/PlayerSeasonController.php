@@ -54,7 +54,7 @@ class PlayerSeasonController extends Controller
             'damage' => 'nullable',
             'is_star' => 'nullable',
             'is_observer' => 'nullable',
-            'season_id' => 'required',
+            'season_id' => 'required|integer',
             'guild_id' => 'required'
         ]));
 

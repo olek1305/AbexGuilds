@@ -17,7 +17,7 @@ class SeasonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
+            'season' => $this->faker->numberBetween(1, 15),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
