@@ -11,12 +11,7 @@
     {
         use HasFactory;
 
-        protected $fillable = ['player_id', 'season_id', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
-
-        public function season(): BelongsTo
-        {
-            return $this->belongsTo(Season::class);
-        }
+        protected $fillable = ['player_id', 'season', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
 
         public function user(): BelongsTo
         {

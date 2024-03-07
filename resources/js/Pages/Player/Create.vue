@@ -39,9 +39,9 @@
 
                     <div class="mb-4">
                         <label class="label">Season</label>
-                        <input v-model.number="form.season_id" type="text" class="input-field input" />
-                        <div v-if="form.errors.season_id" class="error-msg">
-                            {{ form.errors.season_id }}
+                        <input v-model.number="form.season" type="text" class="input-field input" />
+                        <div v-if="form.errors.season" class="error-msg">
+                            {{ form.errors.season }}
                         </div>
                     </div>
 
@@ -81,16 +81,15 @@ const form = useForm({
     damage: props.player.damage,
     is_observer: props.player.is_observer,
     is_star: props.player.is_star,
-    season_id: props.player.season_id,
+    season: props.player.season,
     guild_id: props.player.guild_id,
 })
 
 const create = () => {
     form.player_id = selectedNickId;
     form.guild_id = selectedGuildId
-    console.log(form)
 
-    form.post(route('player.store',  { player: props.player.id }))
+    form.post(route('player.store'))
 }
 
 let selectedNickId = null;
