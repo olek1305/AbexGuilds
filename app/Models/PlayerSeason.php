@@ -61,8 +61,8 @@
                     $filters['damageTo'] ?? false,
                     fn ($query, $value) => $query->where('damage', '<=', $value)
                 )->when(
-                    $filters['season_id'] ?? false,
-                    fn ($query, $value) => $query->where('season_id', '=', $value)
+                    $filters['season'] ?? false,
+                    fn ($query, $value) => $query->where('season', '=', $value)
                 );
         }
     }

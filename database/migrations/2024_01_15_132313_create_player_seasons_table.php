@@ -12,15 +12,13 @@ class CreatePlayerSeasonsTable extends Migration
         Schema::create('player_seasons', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class, 'player_id')->constrained('users');
-            $table->unsignedBigInteger('season_id');
+            $table->tinyInteger('season');
             $table->integer('damage')->default(0);
             $table->boolean('is_observer')->default(false);
             $table->boolean('is_star')->default(false);
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreignId('guild_id')->constrained('guilds');
             $table->timestamps();
-
-            $table->foreign('season_id')->references('id')->on('seasons');
         });
     }
 

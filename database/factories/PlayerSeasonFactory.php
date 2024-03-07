@@ -20,7 +20,7 @@ class PlayerSeasonFactory extends Factory
     public function definition(): array
     {
         return [
-            'season_id' => Season::factory(),
+            'season' => $this->faker->numberBetween(1, 12),
             'player_id' => User::factory(),
             'damage' => $this->faker->numberBetween(0, 1000000),
             'is_observer' => $this->faker->boolean,

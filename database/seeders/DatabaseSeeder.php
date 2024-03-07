@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Guild;
+use App\Models\Note;
+use App\Models\PlayerSeason;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(30)->create();
-        \App\Models\Guild::factory(10)->create();
-        \App\Models\Note::factory(20)->create();
-        \App\Models\Season::factory(3)->create();
-        \App\Models\PlayerSeason::factory(120)->create();
+        User::factory(30)->create();
+        Guild::factory(10)->create();
+        Note::factory(20)->create();
+        PlayerSeason::factory(120)->create();
 
 
         // \App\Models\User::factory()->create([

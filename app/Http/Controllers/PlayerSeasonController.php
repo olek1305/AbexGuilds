@@ -13,7 +13,7 @@ class PlayerSeasonController extends Controller
     public function index(Request $request)
     {
         $filters = $request->only([
-           'guild_id', 'damageFrom', 'damageTo', 'season_id'
+           'guild_id', 'damageFrom', 'damageTo', 'season'
         ]);
 
         $guilds = Guild::all();
@@ -54,7 +54,7 @@ class PlayerSeasonController extends Controller
             'damage' => 'nullable',
             'is_star' => 'nullable',
             'is_observer' => 'nullable',
-            'season_id' => 'required|integer',
+            'season' => 'required|integer',
             'guild_id' => 'required'
         ]));
 

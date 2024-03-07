@@ -8,14 +8,13 @@
         </div>
         <div class="mb-4 sm:mb-0 sm:mr-2">
             <select v-model.number="filterForm.guild_id" class="input">
-
                 <option :value="null" hidden>Nazwa Gildia</option>
                 <option v-for="(guild, index) in guilds" :key="index" :value="guild.id">{{ guild.name }}</option>
             </select>
         </div>
 
         <div class="mb-4 sm:mb-0 sm:mr-2">
-            <select v-model.number="filterForm.season_id" class="input">
+            <select v-model.number="filterForm.season" class="input">
                 <option :value="null" hidden>season</option>
                 <option v-for="n in 12" :key="n" :value="n">{{ n }}</option>
             </select>
@@ -48,7 +47,7 @@ const filterForm = useForm({
     guild_id: props.filters.guild_id ?? null,
     damageFrom: props.filters.damageFrom ?? null,
     damageTo: props.filters.damageTo ?? null,
-    season_id: props.filters.season_id ?? null,
+    season: props.filters.season ?? null,
 })
 
 const filter = () => {
@@ -65,7 +64,7 @@ const clear = () => {
     filterForm.guild_id = null
     filterForm.damageFrom = null
     filterForm.damageTo = null
-    filterForm.season_id = null
+    filterForm.season = null
     filter()
 }
 </script>
