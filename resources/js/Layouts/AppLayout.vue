@@ -65,6 +65,9 @@ const flashError = computed(
                                 <NavLink :href="route('note.index')" :active="route().current('note.index')">
                                     Notes
                                 </NavLink>
+                                <NavLink :href="route('admin.index')" :active="route().current('admin.intex')">
+                                    Admin
+                                </NavLink>
                             </div>
                         </div>
 
@@ -152,6 +155,9 @@ const flashError = computed(
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('note.index')" :active="route().current('note.index')">
                             Notes
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('admin.index')" :active="route().current('admin.index')">
+                            Admin
                         </ResponsiveNavLink>
                     </div>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PlayerSeasonController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::resource('/player', PlayerSeasonController::class);
     Route::get('/note', [NoteController::class, 'index'])->name('note.index');
+    Route::resource('/admin', AdminController::class);
 });
 
 Route::middleware([
