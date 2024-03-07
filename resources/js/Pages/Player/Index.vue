@@ -7,7 +7,7 @@
                         <Link class="flex btn justify-center" :href="route('player.create')">Utwórz gracza</Link>
                     </div>
                     <hr>
-                    <PlayerFilters :filters="filters" :guilds="guilds"/>
+                    <PlayerFilters :filters="filters" :guilds="guilds" :seasons="seasons"/>
                     <div class="overflow-x-auto">
                         <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -48,7 +48,8 @@ const columns = ['Username', 'Damage', 'Obser?', 'Gwiazda?', 'Gildia', 'Edit', '
 const props = defineProps({
     players: Object,
     filters: Object,
-    guilds: Object
+    guilds: Object,
+    seasons: Object
 })
 </script>
 

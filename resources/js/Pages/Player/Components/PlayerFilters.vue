@@ -13,12 +13,11 @@
             </select>
         </div>
 
-        <div class="mb-4 sm:mb-0 sm:mr-2">
-            <select v-model.number="filterForm.season" class="input">
-                <option :value="null" hidden>season</option>
-                <option v-for="n in 12" :key="n" :value="n">{{ n }}</option>
-            </select>
-        </div>
+        <select v-model.number="filterForm.season" class="input">
+            <option :value="null" hidden>season</option>
+            <option v-for="season in sortedSeasons" :key="season" :value="season">{{ season }}</option>
+        </select>
+
         <div class="flex flex-col sm:flex-row p-2">
             <button type="submit" class="btn mb-2 sm:mb-0 sm:mr-2">Filter</button>
             <button type="reset" @click="clear" class="btn">Clear</button>
@@ -37,10 +36,12 @@ form {
 
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import {computed} from "vue";
 
 const props = defineProps({
     filters: Object,
-    guilds: Object
+    guilds: Object,
+    seasons: Object
 })
 
 const filterForm = useForm({
@@ -67,4 +68,8 @@ const clear = () => {
     filterForm.season = null
     filter()
 }
+
+const sortedSeasons = computed(() => {
+    return props.seasons.slice().sort((a, b) => a - b);
+});
 </script>

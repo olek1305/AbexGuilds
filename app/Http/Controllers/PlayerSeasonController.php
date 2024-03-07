@@ -18,6 +18,8 @@ class PlayerSeasonController extends Controller
 
         $guilds = Guild::all();
 
+        $seasons = PlayerSeason::distinct()->pluck('season');
+
         $players = PlayerSeason::query()
             ->with('user', 'guild')
             ->latestGuildId()
@@ -32,7 +34,8 @@ class PlayerSeasonController extends Controller
             [
                 'players' => $players,
                 'filters' => $filters,
-                'guilds' => $guilds
+                'guilds' => $guilds,
+                'seasons' => $seasons,
             ]);
     }
 
