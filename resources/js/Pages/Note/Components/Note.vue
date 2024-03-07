@@ -1,5 +1,5 @@
 <template>
-    <div class="dark:text-white border-2 border-sky-500 p-1 bg-amber-100 dark:bg-sky-800 flex flex-col">
+    <Box class="grid">
         <p>Notatnik: ID {{ props.note.id }}: {{ shortCutData(props.note.created_at) }}</p>
         <p class="font-semibold" v-if="props.note.user">Gracz: {{ props.note.user.name }}</p>
         <p class="font-semibold">Powód: {{ props.note.title }}</p>
@@ -8,10 +8,12 @@
             <button class="btn ml-2 flex-grow hover:bg-yellow-400" @click="editNote">Edit</button>
             <button class="btn ml-2 flex-grow hover:bg-red-600" @click="deleteNote">Delete</button>
         </div>
-    </div>
+    </Box>
 </template>
 
 <script setup>
+import Box from "@/Pages/Components/UI/Box.vue";
+
 const props = defineProps({
     note: Object
 })
