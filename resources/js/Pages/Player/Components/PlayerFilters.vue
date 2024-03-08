@@ -19,7 +19,7 @@
         </select>
 
         <div class="flex flex-col sm:flex-row p-2">
-            <button type="submit" class="btn mb-2 sm:mb-0 sm:mr-2">Filter</button>
+            <button type="submit" class="btn">Filter</button>
             <button type="reset" @click="clear" class="btn">Clear</button>
         </div>
     </form>

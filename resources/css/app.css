@@ -7,7 +7,7 @@
 }
 
 .btn {
-    @apply p-2 rounded-md border-2 shadow-sm border-gray-300 dark:border-sky-500 hover:border-gray-300 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-300 dark:text-blue-100 dark:hover:text-black ;
+    @apply p-2 rounded-md border-2 shadow-sm border-gray-300 dark:border-sky-500 hover:border-gray-300 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-300 dark:text-blue-100 dark:hover:text-black m-1;
 }
 
 

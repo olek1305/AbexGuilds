@@ -2,7 +2,7 @@
     <AppLayout>
         <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create" method="POST">
             <Box>
-                <div>
+                <div class="m-2">
                     <label for="name" class="grid justify-center">Nazwa gildia</label>
                     <input id="name" v-model="form.name" type="text" class="input" />
                     <div v-if="form.errors.name" class="input.error">{{ form.errors.name }}</div>
