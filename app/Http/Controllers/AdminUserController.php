@@ -19,7 +19,7 @@ class AdminUserController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'nullable|email',
-            'password' => 'nullable|password'
+            'password' => 'nullable'
         ]);
 
         $user = new User();
