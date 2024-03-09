@@ -8,7 +8,7 @@
                     <div v-if="form.errors.name" class="input.error">{{ form.errors.name }}</div>
                 </div>
                 <div class="grid">
-                    <button class="btn dark:hover:bg-green-500" type="submit">Create</button>
+                    <button class="btn dark:hover:bg-green-500" type="submit">Utwórz</button>
                 </div>
             </Box>
         </form>
