@@ -14,26 +14,12 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="label">Damage</label>
-                        <input v-model.number="form.damage" type="text" class="input-field input" />
-                        <div v-if="form.errors.damage" class="error-msg">
-                            {{ form.errors.damage }}
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="label">Obserwator</label>
-                        <input v-model.number="form.is_observer" type="text" class="input-field input" />
-                        <div v-if="form.errors.is_observer" class="error-msg">
-                            {{ form.errors.is_observer }}
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="label">Gwiazda</label>
-                        <input v-model.number="form.is_star" type="text" class="input-field input" />
-                        <div v-if="form.errors.is_star" class="error-msg">
-                            {{ form.errors.is_star }}
+                        <label class="label">Gildia</label>
+                        <select v-model="selectedGuildId" class="input-field input">
+                            <option v-for="guild in sortedGuilds" :value="guild.id">{{ guild.name }}</option>
+                        </select>
+                        <div v-if="form.errors.guild_id" class="error-msg">
+                            {{ form.errors.guild_id }}
                         </div>
                     </div>
 
@@ -46,13 +32,21 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="label">Gildia</label>
-                        <select v-model="selectedGuildId" class="input-field input">
-                            <option v-for="guild in sortedGuilds" :value="guild.id">{{ guild.name }}</option>
-                        </select>
-                        <div v-if="form.errors.guild_id" class="error-msg">
-                            {{ form.errors.guild_id }}
+                        <label class="label">Damage</label>
+                        <input v-model.number="form.damage" type="text" class="input-field input" />
+                        <div v-if="form.errors.damage" class="error-msg">
+                            {{ form.errors.damage }}
                         </div>
+                    </div>
+
+                    <div class="flex items-center mb-4 ps-4 border border-gray-200 rounded dark:border-gray-700">
+                        <input id="gwiazda-checkbox" type="checkbox" v-model="form.is_star" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                        <label for="gwiazda-checkbox" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Gwiazda</label>
+                    </div>
+
+                    <div class="flex items-center mb-4 ps-4 border border-gray-200 rounded dark:border-gray-700">
+                        <input id="obserwator-checkbox" type="checkbox" v-model="form.is_observer" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                        <label for="obserwator-checkbox" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Obserwator</label>
                     </div>
 
                     <div>
@@ -79,8 +73,8 @@ const props = defineProps({
 const form = useForm({
     player_id: props.player_id,
     damage: props.player.damage,
-    is_observer: props.player.is_observer,
-    is_star: props.player.is_star,
+    is_observer: props.player.is_observer || 0,
+    is_star: props.player.is_star || 0,
     season: props.player.season,
     guild_id: props.player.guild_id,
 })
