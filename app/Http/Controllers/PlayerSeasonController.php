@@ -91,7 +91,7 @@ class PlayerSeasonController extends Controller
     {
         $player->deleteOrFail();
         return redirect()->route('player.index')
-            ->with('error', 'gracz zostal usuniety');
+            ->with('error', 'Gracz: ' . $player->user->name  . ' zostal usuniety');
     }
 }
 
