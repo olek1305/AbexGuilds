@@ -1,10 +1,10 @@
 <template>
-    <tr class="text-center hover:border-2 hover:border-black">
-        <td :class="colorColumn(props.columnIndex)">{{ props.player.user.name }}</td>
-        <td :class="colorColumn(props.columnIndex)">{{ props.player.damage }}</td>
-        <td :class="colorColumn(props.columnIndex)">{{ props.player.is_star ? 'Tak' : 'Nie'}}</td>
-        <td :class="colorColumn(props.columnIndex)">{{ props.player.is_observer ? 'Tak' : 'Nie'}}</td>
-        <td :class="colorColumn(props.columnIndex)">{{ props.player.guild.name }}</td>
+    <tr class="text-center hover:border-2 hover:border-black" :key="props.player.id">
+        <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.user.name }}</td>
+        <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.damage }}</td>
+        <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.is_star ? 'Tak' : 'Nie'}}</td>
+        <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.is_observer ? 'Tak' : 'Nie'}}</td>
+        <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.guild.name }}</td>
         <td :class="colorColumn(props.columnIndex)">
             <button @click.stop="selectedPlayer = props.player; showModal = true">
                 Wyświetl szczegóły
