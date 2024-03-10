@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class AdminUserController extends Controller
 {
@@ -14,16 +15,25 @@ class AdminUserController extends Controller
         return inertia('Admin/User/Create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
+        if (!auth()->user()->can('updateIsAdmin', $user)) {
+            return redirect()->route('admin.index')
+                ->with('error', 'Brak uprawnień do zmiany statusu administratora');
+            // pozniej dodam do policy
+            // jeśli jesteś moderatorem, nie możesz nadawać uprawnień administratora
+        }
+
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'nullable|email',
-            'password' => 'nullable'
+            'name' => ['required', 'string', Rule::unique('users')],
+            'email' => 'nullable|email|unique:users',
+            'password' => 'nullable',
+            'is_admin' => 'boolean'
         ]);
 
         $user = new User();
         $user->name = $request->name;
+        $user->is_admin = $request->filled('is_admin') ? $request->is_admin : false;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);

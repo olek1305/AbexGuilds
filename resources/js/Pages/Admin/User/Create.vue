@@ -1,6 +1,6 @@
 <template>
     <AppLayout>
-        <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create" method="POST">
+        <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create">
             <Box>
                 <div class="m-2">
                     <label for="name" class="grid justify-center">User</label>
@@ -16,6 +16,10 @@
                     <label for="name" class="grid justify-center text-center">Hasło</label>
                     <input id="name" v-model="form.password" type="text" class="input" placeholder="(Pozostaw pole puste)"/>
                     <div v-if="form.errors.password" class="input.error">{{ form.errors.password }}</div>
+                </div>
+                <div class="flex items-center mb-4 ps-4 border border-gray-200 rounded dark:border-gray-700">
+                    <input id="admin-checkbox" type="checkbox" v-model="form.is_admin" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <label for="admin-checkbox" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Admin</label>
                 </div>
                 <div class="grid">
                     <button class="btn dark:hover:bg-green-500" type="submit">Utwórz</button>
@@ -33,8 +37,15 @@ import {route} from "ziggy-js";
 const form = useForm({
     name: null,
     email: null,
-    password: null
-})
+    password: null,
+    is_admin: false
+});
 
-const create = () => form.post(route('admin.user.store'))
+const create = () => {
+    form.post(route('admin.user.store'), {
+        onSuccess: () => {
+            form.reset();
+        }
+    })
+}
 </script>
