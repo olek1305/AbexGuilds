@@ -7,21 +7,13 @@ use App\Models\User;
 
 class PlayerSeasonPolicy
 {
-    public function before(?User $user, $ability)
-    {
-        if ($user?->is_admin){
-            echo "is work?";
-            return true;
-        }
-    }
-
-    public function viewAny(?User $user)
+    public function viewAny(?User $user): bool
     {
         return true;
     }
 
-    public function update(User $user, PlayerSeason $playerSeason)
+    public function update(User $user, PlayerSeason $playerSeason): bool
     {
-        return $user->id === $playerSeason->player_id;
+        return $user->is_admin;
     }
 }

@@ -67,6 +67,10 @@ class PlayerSeasonController extends Controller
 
     public function update(Request $request, PlayerSeason $player)
     {
+        if (!auth()->user()->can('update', $player)) {
+            abort(403);
+        }
+
         $player->update(
             $request->validate([
                 'damage' => 'required|integer|min:0',
@@ -93,5 +97,6 @@ class PlayerSeasonController extends Controller
         return redirect()->route('player.index')
             ->with('error', 'Gracz: ' . $player->user->name  . ' zostal usuniety');
     }
+
 }
 

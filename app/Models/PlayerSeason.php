@@ -43,6 +43,11 @@
             return $query->orderBy('is_observer');
         }
 
+        public function isAdmin(): bool
+        {
+            return $this->user->is_admin;
+        }
+
         public function scopeFilter(Builder $query, array $filters): Builder
         {
             return $query
