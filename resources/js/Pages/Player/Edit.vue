@@ -30,9 +30,8 @@
                     <label for="obserwator-checkbox" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Obserwator</label>
                 </div>
 
-
                 <div class="grid">
-                    <button class="btn h-full" type="submit">Update</button>
+                    <button class="btn h-full" type="submit">Aktualizacja</button>
                 </div>
             </div>
         </form>
@@ -57,7 +56,4 @@ const form = useForm({
 const update = () => {
     form.put(route('player.update', { player: props.player.id }))
 }
-
-console.log(form.is_star);
-console.log(form.is_observer);
 </script>
