@@ -14,8 +14,6 @@
     </tr>
 </template>
 <script setup>
-import { router } from "@inertiajs/vue3";
-import { route } from "ziggy-js";
 import PlayerModal from "@/Pages/Player/Components/PlayerModal.vue";
 import {ref} from "vue";
 
@@ -27,13 +25,6 @@ const props = defineProps({
 const colorColumn = (index) => index % 2 === 0
     ? 'dark:bg-cyan-300 dark:text-black bg-orange-200 text-black font-normal'
     : 'dark:bg-blue-400 dark:text-zinc-950 bg-amber-400 text-black font-normal';
-const askToDestroy = (player) => {
-
-}
-
-const redirectToEdit = (player) => {
-
-};
 
 let selectedPlayer = ref(null);
 let showModal = ref(false);
