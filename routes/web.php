@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminSeasonController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminUserRestoreController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PlayerSeasonController;
 use App\Http\Controllers\AdminController;
@@ -14,16 +15,21 @@ Route::get('/', [PlayerSeasonController::class, 'index'])->name('player.index')-
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::resource('/player', PlayerSeasonController::class);
-    Route::get('/note', [NoteController::class, 'index'])->name('note.index');
+    Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::prefix('admin')->group(function () {
-        Route::get('guild/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
-        Route::post('guild/store', [AdminGuildController::class, 'store'])->name('admin.guild.store');
 
-        Route::get('user', [AdminUserController::class, 'create'])->name('admin.user.create');
-        Route::post('user/store', [AdminUserController::class, 'store'])->name('admin.user.store');
-        Route::put('user/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
-        Route::delete('user/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+    Route::prefix('admin')->group(function () {
+        Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
+        Route::post('guilds/store', [AdminGuildController::class, 'store'])->name('admin.guild.store');
+
+        Route::get('users/list', [AdminUserController::class, 'list'])->name('admin.user.list');
+        Route::get('users/create', [AdminUserController::class, 'create'])->name('admin.user.create');
+        Route::post('users/store', [AdminUserController::class, 'store'])->name('admin.user.store');
+        Route::put('users/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
+        Route::get('users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.user.edit');
+        Route::delete('users/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+        Route::get('users/restore', [AdminUserRestoreController::class, 'index'])->name('admin.user.restoreIndex');
+        Route::post('users/{user}/restore', [AdminUserRestoreController::class, 'restore'])->name('admin.user.restore')->withTrashed();
     });
 });
 
