@@ -25,19 +25,4 @@ class AdminController extends Controller
             'latestSeasonId' => $latestSeasonId
         ]);
     }
-
-
-    public function destroy(User $user)
-    {
-        $user->deleteOrFail();
-
-        return redirect()->back()
-            ->with('success', 'User został usunięty!');
-    }
-
-    public function restore(User $user) {
-        $user->restore();
-
-        return redirect()->back()->with('success', 'User został przywrócony!');
-    }
 }

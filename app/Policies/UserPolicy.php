@@ -12,4 +12,9 @@ class UserPolicy
     {
         return $currentUser->is_admin;
     }
+
+    public function delete(User $user)
+    {
+        return $user->id === auth()->id() || auth()->user()->can('admin');
+    }
 }

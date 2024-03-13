@@ -8,23 +8,19 @@
                 </div>
             </Box>
             <Box class="text flex justify-center m-2 text-center ">
-                <div class="btn" @click="routeToGuild">
-                    <span class="p-1">Utwórz Guild</span>
+                <div class="btn">
+                    <a class="p-1" :href="route('admin.guild.create')">Utwórz Guild</a>
                 </div>
-                <div class="btn" @click="routeToUser">
-                    <span class="p-1">Utwórz User</span>
+                <div class="btn">
+                    <a class="p-1" :href="route('admin.user.create')">Utwórz User</a>
                 </div>
             </Box>
             <Box class="text flex justify-center m-2 text-center ">
-                <p class="text-center">W trakcie dev</p>
                 <div class="btn text-lg">
-                    <span class="p-1 cursor-not-allowed">zmiana nicku gracza</span>
+                    <a :href="route('admin.user.list')">Lista użytkowników</a>
                 </div>
                 <div class="btn text-lg">
-                    <span class="p-1 cursor-not-allowed">zmiana hasła gracza</span>
-                </div>
-                <div class="btn text-lg">
-                    <span class="p-1 cursor-not-allowed">Przywracanie user</span>
+                   <a :href="route('admin.user.restoreIndex')">Przywróć użytkownika</a>
                 </div>
             </Box>
         </div>
@@ -40,10 +36,4 @@ const props = defineProps({
     latestSeasonId: Number
 })
 
-const routeToGuild = () => {
-    window.location.href = route('admin.guild.create');
-};
-const routeToUser = () => {
-    window.location.href = route('admin.user.create');
-};
 </script>
