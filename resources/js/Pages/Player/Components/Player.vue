@@ -7,7 +7,7 @@
         <td v-once :class="colorColumn(props.columnIndex)">{{ props.player.guild.name }}</td>
         <td :class="colorColumn(props.columnIndex)">
             <button @click.stop="selectedPlayer = props.player; showModal = true">
-                Wyświetl szczegóły
+                Edit
             </button>
             <PlayerModal :player="selectedPlayer" :show-modal="showModal" @close="showModal = false" />
         </td>

@@ -43,7 +43,7 @@ import Pagination from "@/Pages/Components/UI/Pagination.vue";
 import {route} from "ziggy-js";
 import {Link} from "@inertiajs/vue3";
 
-const columns = ['Username', 'Damage', 'Gwiazda?', 'Obser?', 'Gildia', 'Edit'];
+const columns = ['Username', 'Damage', 'Gwiazda?', 'Obser?', 'Gildia', 'Akcje'];
 
 const props = defineProps({
     players: Object,
