@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class AdminUserController extends Controller
 {
@@ -61,6 +62,34 @@ class AdminUserController extends Controller
         return inertia('Admin/User/Edit', [
             'user' => $user
         ]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        if (!auth()->user()->can('update', $user)) {
+            return redirect()->route('admin.index')
+                ->with('error', 'Brak uprawnień do edycji użytkownika.');
+        }
+
+        $request->validate([
+            'name' => ['required', 'string', Rule::unique('users')->ignore($user->id)],
+            'email' => ['nullable', 'string', 'email', Rule::unique('users')->ignore($user->id)],
+            'password' => ['nullable', 'string', 'min:6'],
+            'is_admin' => 'boolean'
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->is_admin = $request->filled('is_admin');
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.index')
+            ->with('success', 'Dane użytkownika zaktualizowane.');
     }
 
     public function destroy(User $user)
