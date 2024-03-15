@@ -14,8 +14,26 @@ use Inertia\Inertia;
 Route::get('/', [PlayerSeasonController::class, 'index'])->name('player.index')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::resource('/player', PlayerSeasonController::class);
-    Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
+    Route::resource('/players', PlayerSeasonController::class)
+        ->except('show')
+        ->names([
+            'index' => 'players.index',
+            'create' => 'player.create',
+            'store' => 'player.store',
+            'update' => 'player.update',
+            'edit' => 'player.edit',
+            'destroy' => 'player.destroy'
+    ]);
+    Route::resource('/notes', NoteController::class)
+        ->names([
+            'index' => 'notes.index',
+            'show' => 'note.show',
+            'store' => 'note.store',
+            'create' => 'note.create',
+            'edit' => 'note.edit',
+            'update' => 'note.update',
+            'destroy' => 'note.destroy'
+        ]);
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     Route::prefix('admin')->group(function () {
