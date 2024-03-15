@@ -26,17 +26,17 @@
 </template>
 
 <style scoped>
-/* Dodatkowe style CSS */
 form {
-    max-width: 800px; /* Maksymalna szerokość formularza */
-    margin: auto; /* Wyśrodkowanie formularza */
+    max-width: 800px;
+    margin: auto;
 }
 </style>
 
 
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import {computed} from "vue";
+import { computed } from "vue";
+import { route } from "ziggy-js";
 
 const props = defineProps({
     filters: Object,
@@ -51,15 +51,21 @@ const filterForm = useForm({
     season: props.filters.season ?? null,
 })
 
+let filterTimeout = null;
+
 const filter = () => {
-    filterForm.get(
-        route('player.index'),
-        {
-            preserveState: true,
-            preserveScroll: true
-        },
-    )
+    clearTimeout(filterTimeout);
+    filterTimeout = setTimeout(() => {
+        filterForm.get(
+            route('player.index'),
+            {
+                preserveState: true,
+                preserveScroll: true
+            },
+        );
+    }, 1000);
 }
+
 
 const clear = () => {
     filterForm.guild_id = null
