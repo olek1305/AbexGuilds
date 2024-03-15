@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
         PlayerSeason::factory(120)->create();
 
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         User::factory()->create([
+             'name' => 'Test User',
+             'email' => 'test@example.com',
+             'password' => bcrypt('demo123'),
+             'is_admin' => '1'
+         ]);
     }
 }
