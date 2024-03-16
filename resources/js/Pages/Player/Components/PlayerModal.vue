@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import {router} from "@inertiajs/vue3";
-import {route} from "ziggy-js";
+import { router } from "@inertiajs/vue3";
+import { route } from "ziggy-js";
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -40,12 +40,12 @@ const editPlayer = (player) => {
 }
 
 const notePlayer = (player) => {
-    router.get(route('note.show', { player: player.id }));
+    router.get(route('note.show', { note: player.user.id }));
 }
 
 const deletePlayer = (player) => {
-        router.delete(route('player.destroy', { player: player.id }));
-        emit('close');
+    router.delete(route('player.destroy', { player: player.id }));
+    emit('close');
 }
 
 const closeModal = () => {

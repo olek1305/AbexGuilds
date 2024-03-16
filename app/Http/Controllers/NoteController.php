@@ -31,4 +31,34 @@ class NoteController extends Controller
                 'notes' => $notes
             ]);
     }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        $notes = $user->notes()->paginate(10);
+        return inertia('Note/Show', [
+            'user' => $user,
+            'notes' => $notes,
+        ]);
+    }
+
+    public function create()
+    {
+        return inertia('Note/Index/Create');
+    }
+
+    public function store()
+    {
+
+    }
+
+    public function edit()
+    {
+        return inertia('Note/Index/Edit');
+    }
+
+    public function destroy(User $user)
+    {
+
+    }
 }
