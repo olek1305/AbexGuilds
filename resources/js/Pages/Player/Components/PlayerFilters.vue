@@ -1,26 +1,23 @@
 <template>
-    <form @submit.prevent="filter" class="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center pt-2">
-        <div class="mb-4 sm:mb-0 sm:mr-2">
-            <input v-model.number="filterForm.damageFrom" type="text" placeholder="Damage from" class="input" />
-        </div>
-        <div class="mb-4 sm:mb-0 sm:mr-2">
-            <input v-model.number="filterForm.damageTo" type="text" placeholder="Damage to" class="input" />
-        </div>
-        <div class="mb-4 sm:mb-0 sm:mr-2">
-            <select v-model.number="filterForm.guild_id" class="input">
+    <form @submit.prevent="filter" class="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center pt-1">
+        <div class="mb-2 flex flex-wrap justify-center">
+            <input v-model.number="filterForm.damageFrom" type="text" placeholder="od ilu dmg?" class="input w-48" />
+
+            <input v-model.number="filterForm.damageTo" type="text" placeholder="do ilu dmg?" class="input w-48" />
+
+            <select v-model.number="filterForm.guild_id" class="input w-48">
                 <option :value="null" hidden>Nazwa Gildia</option>
                 <option v-for="(guild, index) in guilds" :key="index" :value="guild.id">{{ guild.name }}</option>
             </select>
+
+            <select v-model.number="filterForm.season" class="input w-48">
+                <option :value="null" hidden>Season</option>
+                <option v-for="season in sortedSeasons" :key="season" :value="season">{{ season }}</option>
+            </select>
         </div>
-
-        <select v-model.number="filterForm.season" class="input">
-            <option :value="null" hidden>season</option>
-            <option v-for="season in sortedSeasons" :key="season" :value="season">{{ season }}</option>
-        </select>
-
-        <div class="flex flex-col sm:flex-row p-2">
-            <button type="submit" class="btn">Filter</button>
-            <button type="reset" @click="clear" class="btn">Clear</button>
+        <div class="mb-2 w-52 flex mr-1">
+            <button type="submit" class="flex btn justify-center w-48">Filter</button>
+            <button type="reset" @click="clear" class="flex btn justify-center w-48">Clear</button>
         </div>
     </form>
 </template>

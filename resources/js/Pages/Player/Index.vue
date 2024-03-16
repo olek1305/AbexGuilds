@@ -3,10 +3,9 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 dark:text-white pt-2">
-                    <div class="flex justify-center mb-2">
-                        <Link class="flex btn justify-center" :href="route('player.create')">Utwórz gracza</Link>
+                    <div class="flex justify-center m-1">
+                        <Link class="flex btn justify-center w-52" :href="route('player.create')">Utwórz gracza</Link>
                     </div>
-                    <hr>
                     <PlayerFilters :filters="filters" :guilds="guilds" :seasons="seasons"/>
                     <div class="overflow-x-auto">
                         <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
