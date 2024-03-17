@@ -3,7 +3,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 dark:text-white pt-2">
-                    <div class="flex justify-center m-1">
+                    <div v-if="isAdminUser" class="flex justify-center m-1">
                         <Link class="flex btn justify-center w-52" :href="route('player.create')">Utwórz gracza</Link>
                     </div>
                     <PlayerFilters :filters="filters" :guilds="guilds" :seasons="seasons"/>
@@ -48,8 +48,10 @@ const props = defineProps({
     players: Object,
     filters: Object,
     guilds: Object,
-    seasons: Object
+    seasons: Object,
+    isAdminUser: Object
 })
+
 </script>
 
 <style>

@@ -6,12 +6,16 @@ use App\Models\Guild;
 use App\Models\PlayerSeason;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class PlayerSeasonController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
+        $isAdminUser = ['is_admin' => $user->is_admin];
+
         $filters = $request->only([
            'guild_id', 'damageFrom', 'damageTo', 'season'
         ]);
@@ -36,6 +40,7 @@ class PlayerSeasonController extends Controller
                 'filters' => $filters,
                 'guilds' => $guilds,
                 'seasons' => $seasons,
+                'isAdminUser' => $isAdminUser
             ]);
     }
 
