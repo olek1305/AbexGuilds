@@ -1,8 +1,5 @@
 <template>
     <AppLayout>
-        <div class="flex justify-center mb-2">
-            <button class="btn flex justify-center w-52">Create</button>
-        </div>
         <h2 class="text text-center">Notatnik użytkownika: {{ user.name }}</h2>
         <div class="grid gap-4 sizeSmall sizeBig">
             <Note

@@ -1,6 +1,9 @@
 <template>
     <AppLayout>
-        <p class="text text-center">Niedawno notatnik</p>
+        <div class="flex justify-center m-1">
+            <Link class="flex btn justify-center w-52" :href="route('note.create')">Utwórz Notatnik</Link>
+        </div>
+        <p class="text text-center mb-1 border-t-2 border-l-2 border-r-2 border-sky-500">Niedawno notatnik</p>
         <div class="grid gap-4 sizeSmall sizeBig">
             <Note
                 v-for="note in notes.data"
@@ -16,10 +19,16 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Note from "@/Pages/Note/Components/Note.vue";
 import Pagination from "@/Pages/Components/UI/Pagination.vue";
+import {Link, router} from "@inertiajs/vue3";
+import {route} from "ziggy-js";
 
 const props = defineProps({
     notes: Object,
 })
+
+const notePlayer = (player) => {
+    router.get(route('note.show', { note: player.user.id }));
+}
 
 </script>
 

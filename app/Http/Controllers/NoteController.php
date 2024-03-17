@@ -9,20 +9,6 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-//    public function index(Request $request)
-//    {
-////        $notes = $user->note()->with('user_id')->latest('id')->paginate(10);
-////        $notes = Note::orderBy('id', 'desc')->paginate(10);
-//
-//        $user = $request->user();
-//        $notes = $user->notes()->latest('id')->paginate(10);
-//
-//        return inertia('Note/Index',
-//            [
-//                'notes' => $notes
-//            ]);
-//    }
-
     public function index()
     {
         $notes = Note::orderBy('id', 'desc')->paginate(10);
@@ -44,17 +30,32 @@ class NoteController extends Controller
 
     public function create()
     {
-        return inertia('Note/Index/Create');
+        $users = User::all();
+
+        return inertia('Note/Create', [
+            'users' => $users
+        ]);
     }
 
-    public function store()
+    public function store(Request $request, PlayerSeason $player)
     {
+        if (!auth()->user()->can('update', $player)) {
+            abort(403);
+        }
 
+        Note::create($request->validate([
+            'user_id' => 'required',
+            'title' => 'required|max:255',
+            'body' => 'required|string|max:255'
+        ]));
+
+        return redirect()->route('notes.index')
+            ->with('success', 'Stworzony notatnik');
     }
 
     public function edit()
     {
-        return inertia('Note/Index/Edit');
+        return inertia('Note/Edit');
     }
 
     public function destroy(User $user)
