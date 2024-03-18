@@ -1,7 +1,7 @@
 <template>
     <AppLayout>
         <div class="container">
-            <h1>Edycja użytkownika</h1>
+            <h1 class="text">Edycja użytkownika</h1>
             <form @submit.prevent="onSubmit">
                 <div class="form-group">
                     <label for="name" class="text">Nazwa:</label>
