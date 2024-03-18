@@ -45,8 +45,6 @@ const update = () => {
     form.put(route('note.update', {note: props.note.id}))
 };
 
-console.log(props.note)
-
 </script>
 
 <style>
