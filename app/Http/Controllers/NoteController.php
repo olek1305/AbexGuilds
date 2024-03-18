@@ -53,13 +53,29 @@ class NoteController extends Controller
             ->with('success', 'Stworzony notatnik');
     }
 
-    public function edit()
+    public function edit(Note $note)
     {
-        return inertia('Note/Edit');
+        return Inertia('Note/Edit', [
+            'note' => $note
+        ]);
     }
 
-    public function destroy(User $user)
+    public function update(Note $note, Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'nullable|string',
+        ]);
 
+        $note->update($validatedData);
+
+        return redirect()->route('notes.index')->with('success', 'Note updated!');
+    }
+
+    public function destroy(Note $note)
+    {
+        $note->deleteOrFail();
+        return redirect()->route('notes.index')
+            ->with('error', 'Notatnik ID:' . $note->id . 'zostal usuniety');
     }
 }
