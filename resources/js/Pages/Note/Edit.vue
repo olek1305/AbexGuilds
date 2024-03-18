@@ -53,8 +53,6 @@ const update = () => {
     margin-bottom: 0.5rem;
 }
 
-.input-field,
-
 .error-msg {
     color: red;
     margin-top: 0.25rem;
