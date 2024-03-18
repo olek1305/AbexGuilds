@@ -53,6 +53,13 @@ const update = () => {
     margin-bottom: 0.5rem;
 }
 
+.input-field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
 .error-msg {
     color: red;
     margin-top: 0.25rem;
