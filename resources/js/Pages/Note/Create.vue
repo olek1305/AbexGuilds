@@ -57,7 +57,6 @@ const form = useForm({
 
 const create = () => {
     form.user_id = selectedNickId;
-    console.log(form.user_id + ' ' + form.title + ' ' +form.body)
 
     form.post(route('note.store'))
 }
