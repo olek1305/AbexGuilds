@@ -15,8 +15,8 @@
                     <td :class="colorColumn(index)" class="font-normal">{{ user.id }}</td>
                     <td :class="colorColumn(index)" class="font-normal">{{ user.name }}</td>
                     <td :class="colorColumn(index)" class="font-normal">
-                        <a class="btn" :href="route('admin.user.edit', { user: user.id })">Edytuj</a>
-                        <button class="btn" @click="deleteUser(user)">Usuń</button>
+                        <a class="btn dark:text-black" :href="route('admin.user.edit', { user: user.id })">Edytuj</a>
+                        <button class="btn dark:text-black" @click="deleteUser(user)">Usuń</button>
                     </td>
                 </tr>
                 </tbody>
