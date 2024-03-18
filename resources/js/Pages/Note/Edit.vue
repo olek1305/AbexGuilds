@@ -56,12 +56,6 @@ console.log(props.note)
 }
 
 .input-field,
-.select-field {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-}
 
 .error-msg {
     color: red;
