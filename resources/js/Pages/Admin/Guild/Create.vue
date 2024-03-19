@@ -1,16 +1,14 @@
 <template>
     <AppLayout>
         <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create" method="POST">
-            <Box>
-                <div class="m-2">
+                <div class="form-group title">
                     <label for="name" class="grid justify-center">Nazwa gildia</label>
                     <input id="name" v-model="form.name" type="text" class="input" />
                     <div v-if="form.errors.name" class="input.error">{{ form.errors.name }}</div>
                 </div>
-                <div class="grid">
-                    <button class="btn dark:hover:bg-green-500" type="submit">Utwórz</button>
+                <div class="submit">
+                    <button class="btn" type="submit">Utwórz</button>
                 </div>
-            </Box>
         </form>
     </AppLayout>
 </template>

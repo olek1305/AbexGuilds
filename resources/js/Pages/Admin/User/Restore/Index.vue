@@ -1,23 +1,23 @@
 <template>
     <AppLayout>
-        <Box>
-            <div class="mb-4">
-                <label class="label">Nick</label>
-                <select v-model="selectedNickId" class="select-field input">
+        <Box class="w-52 mx-auto">
+            <div class="form-group mb-2">
+                <label class="label text-center">User</label>
+                <select v-model="selectedNickId" class="input">
                     <option class="input" v-for="user in sortedDeletedUsers" :value="user.id">
                         {{ user.name }}
                     </option>
                 </select>
             </div>
-            <div class="flex justify-end">
-                <button @click="restoreUser" v-if="selectedNickId">Przywróć użytkownika</button>
+            <div class="submit">
+                <button class="btn" @click="restoreUser" :disabled="!selectedNickId">Przywróć użytkownika</button>
             </div>
         </Box>
     </AppLayout>
 </template>
 
 <script setup>
-import {defineProps, computed, ref} from 'vue';
+import { defineProps, computed, ref } from 'vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Box from "@/Pages/Components/UI/Box.vue";
 import { route } from "ziggy-js";

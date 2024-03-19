@@ -62,6 +62,7 @@ class NoteController extends Controller
 
     public function update(Note $note, Request $request)
     {
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'nullable|string',
@@ -76,6 +77,6 @@ class NoteController extends Controller
     {
         $note->deleteOrFail();
         return redirect()->route('notes.index')
-            ->with('error', 'Notatnik ID:' . $note->id . 'zostal usuniety');
+            ->with('success', 'Notatnik ID:' . $note->id . 'zostal usuniety');
     }
 }

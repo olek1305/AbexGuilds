@@ -3,17 +3,17 @@
         <div class="bg-white p-4 rounded shadow-md dark:bg-gray-800">
             <div v-if="!showConfirmation">
                 <h2 class="text-lg font-bold mb-2 dark:text-white">Gracz: {{ props.player.user.name }}</h2>
-                <button type="button" class="bg-blue-500 hover:bg-blue-700 textbtn" @click="editPlayer(props.player)">Edit</button>
-                <button type="button" class="bg-yellow-600 hover:bg-blue-700 textbtn" @click="notePlayer(props.player)">Note</button>
-                <button type="button" class="bg-red-500 hover:bg-red-700 textbtn" @click="showConfirmation = true">Delete</button>
-                <button type="button" class="bg-gray-500 hover:bg-gray-700 textbtn" @click="closeModal">Close</button>
+                <button type="button" class="bg-blue-500 hover:bg-gray-300 textbtn" @click="editPlayer(props.player)">Edit</button>
+                <button type="button" class="bg-yellow-600 hover:bg-gray-300 textbtn" @click="notePlayer(props.player)">Note</button>
+                <button type="button" class="bg-red-500 hover:bg-gray-300 textbtn" @click="showConfirmation = true">Delete</button>
+                <button type="button" class="bg-gray-500 hover:bg-gray-300 textbtn" @click="closeModal">Close</button>
             </div>
             <div v-else>
                 <transition name="confirmation">
                     <div>
                         <h2 class="text-lg font-bold mb-2 dark:text-white">Are you sure?</h2>
-                        <button class="bg-red-500 hover:bg-red-700 textbtn" @click="deletePlayer(props.player)">Yes</button>
-                        <button class="bg-blue-500 hover:bg-blue-700 textbtn" @click="showConfirmation = false">No</button>
+                        <button class="bg-red-500 hover:bg-gray-300 textbtn" @click="deletePlayer(props.player)">Yes</button>
+                        <button class="bg-blue-500 hover:bg-gray-300 textbtn" @click="showConfirmation = false">No</button>
                     </div>
                 </transition>
             </div>

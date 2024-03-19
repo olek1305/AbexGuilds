@@ -1,7 +1,7 @@
 <template>
     <AppLayout title="Create Player">
         <form class="max-w-md mx-auto" @submit.prevent="create">
-            <div class="text-center text">
+            <div class="text-center title">
                 <div class="text-center">
                     <div class="mb-4">
                         <label class="label">Nick</label>

@@ -1,18 +1,17 @@
 <template>
     <AppLayout>
-        <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create">
-            <Box>
-                <div class="m-2">
+        <form class="grid grid-cols-subgrid justify-center title" @submit.prevent="create">
+                <div class="form-group">
                     <label for="name" class="grid justify-center">User</label>
                     <input id="name" v-model="form.name" type="text" class="input" placeholder="User"/>
                     <div v-if="form.errors.name" class="input.error">{{ form.errors.name }}</div>
                 </div>
-                <div class="m-2">
+                <div class="form-group">
                     <label for="name" class="grid justify-center text-center">Email</label>
                     <input id="name" v-model="form.email" type="text" class="input" placeholder="(Pozostaw pole puste)"/>
                     <div v-if="form.errors.email" class="input.error">{{ form.errors.email }}</div>
                 </div>
-                <div class="m-2">
+                <div class="form-group mb-3">
                     <label for="name" class="grid justify-center text-center">Hasło</label>
                     <input id="name" v-model="form.password" type="text" class="input" placeholder="(Pozostaw pole puste)"/>
                     <div v-if="form.errors.password" class="input.error">{{ form.errors.password }}</div>
@@ -21,10 +20,9 @@
                     <input id="admin-checkbox" type="checkbox" v-model="form.is_admin" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="admin-checkbox" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Admin</label>
                 </div>
-                <div class="grid">
-                    <button class="btn dark:hover:bg-green-500" type="submit">Utwórz</button>
+                <div class="submit">
+                    <button class="btn" type="submit">Utwórz</button>
                 </div>
-            </Box>
         </form>
     </AppLayout>
 </template>

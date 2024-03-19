@@ -7,16 +7,39 @@
 }
 
 .btn {
-    @apply p-2 rounded-md border-2 shadow-sm border-gray-300 dark:border-sky-500 hover:border-gray-300 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-300 dark:text-blue-100 dark:hover:text-black m-1;
+    @apply p-2 rounded-md border-2 shadow-lg border-gray-300 dark:border-sky-600
+    hover:border-gray-300 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-300
+    dark:text-sky-50 dark:hover:text-black m-1 dark:bg-sky-700 max-w-40 min-h-12
+    text-lg;
+}
+
+.bg {
+    @apply dark:bg-sky-800
 }
 
 
-.text {
+.title {
     @apply text-black dark:text-blue-100 text-2xl
 }
 
+.text {
+    @apply dark:text-sky-50
+}
+
+.btntext {
+    @apply dark:text-gray-300 text-lg
+}
+
 .input {
-    @apply dark:text-black text-center
+    @apply dark:text-black text-center dark:bg-sky-300
+}
+
+.form-group {
+    @apply grid grid-cols-subgrid justify-center
+}
+
+.submit {
+    @apply flex justify-center mb-1
 }
 
 .confirmation-enter-active {

@@ -1,8 +1,9 @@
 <template>
     <AppLayout title="Edit Player">
         <div class="grid">
-            <div class="mx-auto p-2 border-2 border-sky-500 rounded-md text inline-block m-1">
-                <p>Info player:</p>
+            <p class="title text-center">Info player:</p>
+            <div class="mx-auto p-2 border-2 border-sky-500 rounded-md title inline-block m-1">
+
                 <p>Username: {{ player.user.name }}</p>
                 <p>Guild: {{ player.guild.name }}</p>
                 <p>ID user: {{ player.user.id }}</p>
@@ -10,10 +11,10 @@
                 <p>Season: {{ player.season }}</p>
             </div>
         </div>
-        <form class="grid grid-cols-subgrid justify-center" @submit.prevent="update" >
-            <div class="text-center text">
+        <form class="form-group" @submit.prevent="update" >
+            <div class="text-center title">
                 <div class="m-1">
-                    <label class="label">Damage</label>
+                    <label>Damage</label>
                     <input v-model.number="form.damage" type="text" class="text-center shadow-md text-black" />
                     <div v-if="form.errors.damage">
                         {{ form.errors.damage }}

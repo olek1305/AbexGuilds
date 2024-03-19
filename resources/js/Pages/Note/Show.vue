@@ -1,13 +1,13 @@
 <template>
     <AppLayout>
-        <h2 class="text text-center">Notatnik użytkownika: {{ user.name }}</h2>
+        <h2 class="title text-center">Notatnik użytkownika: {{ user.name }}</h2>
         <div class="grid gap-4 sizeSmall sizeBig">
             <Note
                 v-for="note in notes.data"
                 :key="note.id" :note="note"
             />
         </div>
-        <div v-if="notes.data.length" class="w-full flex justify-center mt-4 mb-4 text">
+        <div v-if="notes.data.length" class="w-full flex justify-center mt-4 mb-4 title">
             <Pagination :links="notes.links"/>
         </div>
     </AppLayout>
