@@ -15,7 +15,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useForm} from "@inertiajs/vue3";
-import Box from "@/Pages/Components/UI/Box.vue";
 import {route} from "ziggy-js";
 
 const form = useForm({
