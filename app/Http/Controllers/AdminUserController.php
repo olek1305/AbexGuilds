@@ -12,7 +12,7 @@ class AdminUserController extends Controller
 {
     public function list()
     {
-        $users = User::select(['id', 'name'])->get(); // Wybierz tylko niezbędne kolumny
+        $users = User::select(['id', 'name'])->paginate(60)->withQueryString();
         return inertia('Admin/User/List',
             [
                 'users' => $users
