@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <Box v-if="note.user" class="grid">
+    <div class="grid">
+        <Box v-if="note.user" class="md:min-h-48">
             <p class="text">ID {{ props.note.id }}: {{ shortCutData(props.note.created_at) }}</p>
             <div class="text font-bold">User: {{ note.user.name }} </div>
             <p class="text">Powód: {{ props.note.title }}</p>
-            <p class="text">{{ props.note.body }}</p>
+            <p class="text" v-html="props.note.body"></p>
             <div class="flex justify-center">
                 <Link class="btn ml-2 flex-grow hover:bg-gray-300 text-center" :href="route('note.edit', { note: props.note.id })">Edit</Link>
                 <a class="btn ml-2 flex-grow hover:bg-gray-300 text-center cursor-pointer" @click="deleteNote">Delete</a>
@@ -15,7 +15,7 @@
             <p class="text">ID {{ props.note.id }}: {{ shortCutData(props.note.created_at) }}</p>
             <p class="text-red-600 font-bold">Użytkownik usunięty</p>
             <p class="text">Powód: {{ props.note.title }}</p>
-            <p class="text">{{ props.note.body }}</p>
+            <p class="text" v-html="props.note.body"></p>
         </Box>
     </div>
 </template>
