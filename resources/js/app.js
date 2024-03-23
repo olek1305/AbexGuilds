@@ -1,10 +1,13 @@
 import './bootstrap';
 import '../css/app.css';
+import 'vue-material-design-icons/styles.css';
 
 import { createApp, h } from 'vue';
 import {createInertiaApp, router} from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import MenuIcon from 'vue-material-design-icons/Menu.vue';
 import { ZiggyVue } from 'ziggy-js';
+
 import NProgress from 'nprogress'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -22,6 +25,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .component('menu-icon', MenuIcon)
             .mount(el);
     },
 });

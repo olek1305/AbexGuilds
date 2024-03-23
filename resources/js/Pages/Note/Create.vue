@@ -21,13 +21,15 @@
                         </div>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="label">Opis</label>
-                        <textarea v-model="form.body" rows="5" class="input-field input " placeholder="Teksty"></textarea>
-                        <div v-if="form.errors.body" class="error-msg">
-                            {{ form.errors.body }}
-                        </div>
-                    </div>
+<!--                    <div class="mb-4">-->
+<!--                        <label class="label">Opis</label>-->
+<!--                        <textarea v-model="form.body" rows="5" class="input-field input " placeholder="Teksty"></textarea>-->
+<!--                        <div v-if="form.errors.body" class="error-msg">-->
+<!--                            {{ form.errors.body }}-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <Editor v-model="form.body"/>
 
                     <div>
                         <button class="btn mt-3 w-full" type="submit">Create</button>
@@ -39,13 +41,15 @@
 </template>
 
 <script setup>
-import {useForm} from '@inertiajs/vue3'
-import {route} from "ziggy-js";
+import { useForm } from '@inertiajs/vue3'
+import { route } from "ziggy-js";
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {computed} from "vue";
+import { computed } from "vue";
+import Editor from '@/Pages/Components/UI/MyEditor.vue'
 
 const props = defineProps({
     users: Array,
+    content: null
 })
 
 const form = useForm({
