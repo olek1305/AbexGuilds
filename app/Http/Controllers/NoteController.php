@@ -11,10 +11,12 @@ class NoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::orderBy('id', 'desc')->paginate(10);
+        $notes = Note::with('user')->orderBy('id', 'desc')->paginate(10);
+
         return inertia('Note/Index',
             [
-                'notes' => $notes
+                'notes' => $notes,
+
             ]);
     }
 

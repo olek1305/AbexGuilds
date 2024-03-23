@@ -19,11 +19,12 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Note from "@/Pages/Note/Components/Note.vue";
 import Pagination from "@/Pages/Components/UI/Pagination.vue";
-import {Link, router} from "@inertiajs/vue3";
-import {route} from "ziggy-js";
+import { Link, router } from "@inertiajs/vue3";
+import { route } from "ziggy-js";
 
 const props = defineProps({
     notes: Object,
+    users: Object
 })
 
 const notePlayer = (player) => {
