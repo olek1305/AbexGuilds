@@ -20,16 +20,9 @@
                             {{ form.errors.title }}
                         </div>
                     </div>
-
-<!--                    <div class="mb-4">-->
-<!--                        <label class="label">Opis</label>-->
-<!--                        <textarea v-model="form.body" rows="5" class="input-field input " placeholder="Teksty"></textarea>-->
-<!--                        <div v-if="form.errors.body" class="error-msg">-->
-<!--                            {{ form.errors.body }}-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                    <Editor v-model="form.body"/>
+                    <div class="mb-4">
+                        <Editor v-model="form.body"/>
+                    </div>
 
                     <div>
                         <button class="btn mt-3 w-full" type="submit">Create</button>

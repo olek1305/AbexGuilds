@@ -12,11 +12,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="label">Opis</label>
-                        <textarea v-model="form.body" type="text" rows="5" class="input-field input" placeholder="Teksty"></textarea>
-                        <div v-if="form.errors.body" class="error-msg">
-                            {{ form.errors.body }}
-                        </div>
+                        <Editor v-model="form.body"/>
                     </div>
 
                     <div>
@@ -32,6 +28,7 @@
 import { useForm } from '@inertiajs/vue3'
 import { route } from "ziggy-js";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import Editor from "@/Pages/Components/UI/MyEditor.vue";
 
 const props = defineProps({
     note: Object
