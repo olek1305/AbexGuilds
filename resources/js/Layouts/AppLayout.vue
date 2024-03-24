@@ -226,11 +226,11 @@ const flashError = computed(
 
             <!-- Page Content -->
             <main class="container mx-auto p-4 w-full">
-                    <div v-if="flashSuccess" class="p-1 mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900">
+                    <div v-if="flashSuccess" class="p-1 mb-4 border-2 rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-sky-700 text text-center">
                         {{ flashSuccess }}
                     </div>
 
-                    <div v-else-if="flashError" class="p-1 mb-4 border rounded-md shadow-sm border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900 dark:text-white">
+                    <div v-else-if="flashError" class="p-1 mb-4 border rounded-md shadow-sm border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900 text text-center">
                         {{ flashError }}
                     </div>
                 <slot />
