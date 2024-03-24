@@ -22,8 +22,10 @@
                             <tbody>
                                 <Player
                                     v-for="(player, index) in players.data"
-                                    :key="player.id" :player="player"
+                                    :key="player.id"
+                                    :player="player"
                                     :columnIndex="index"
+                                    :guilds="guilds"
                                 />
                             </tbody>
                         </table>

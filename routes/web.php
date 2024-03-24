@@ -22,7 +22,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'store' => 'player.store',
             'update' => 'player.update',
             'edit' => 'player.edit',
-            'destroy' => 'player.destroy'
+            'destroy' => 'player.destroy',
     ]);
     Route::resource('/notes', NoteController::class)
         ->names([
@@ -35,6 +35,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'destroy' => 'note.destroy'
         ]);
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::patch('/players/{player}/transfer', [PlayerSeasonController::class, 'transfer'])->name('players.transfer');
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');

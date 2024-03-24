@@ -10,7 +10,7 @@
                 Edit
             </button>
         </td>
-        <PlayerModal :player="selectedPlayer" :show-modal="showModal" :column-index="props.columnIndex" @close="showModal = false" />
+        <PlayerModal :player="selectedPlayer" :show-modal="showModal" :column-index="props.columnIndex" @close="showModal = false" :guilds="guilds" />
     </tr>
 </template>
 <script setup>
@@ -19,7 +19,9 @@ import {ref} from "vue";
 
 const props = defineProps({
     player: Object,
+    guilds: Object,
     columnIndex: Number
+
 });
 
 const colorColumn = (index) => index % 2 === 0

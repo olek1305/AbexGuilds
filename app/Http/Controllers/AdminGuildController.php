@@ -24,4 +24,19 @@ class AdminGuildController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Gildia ' . $guild->name . ' została utworzona pomyślnie.');
     }
+
+    public function listGuilds()
+    {
+        $guilds = Guild::all();
+        return response()->json($guilds);
+    }
+
+    public function transferPlayer(Request $request, Player $player)
+    {
+        $request->validate([
+            'guild_id' => 'required|integer|exists:guilds,id',
+        ]);
+
+        $targetGuild = Guild::findOrFail($request->guild_id);
+    }
 }

@@ -103,5 +103,18 @@ class PlayerSeasonController extends Controller
             ->with('success', 'Gracz: ' . $player->user->name  . ' zostal usuniety');
     }
 
+    public function transfer(Request $request, PlayerSeason $player)
+    {
+        $request->validate([
+            'guild_id' => 'required|exists:guilds,id'
+        ]);
+
+        $player->update([
+            'guild_id' => $request->guild_id
+        ]);
+
+        return redirect()->route('player.index')
+            ->with('success', 'Gracz: ' . $player->user->name . 'został przeniesiony do innej gildii');
+    }
 }
 
