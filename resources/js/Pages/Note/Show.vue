@@ -11,7 +11,7 @@
         <div v-else class="text-center p-5 text grid justify-center">
             <p class="p-3">Ten użytkownik nie posiada notatek. Stwórz notatkę!</p>
             <div>
-                <Link class="btn" method="get" as="button" type="button" :href="route('note.create')">Home</Link>
+                <Link class="btn" as="button" type="button" :href="route('note.create')">Home</Link>
             </div>
         </div>
         <div v-if="notes.data.length" class="w-full flex justify-center mt-4 mb-4 title">

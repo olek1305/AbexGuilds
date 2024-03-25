@@ -9,18 +9,18 @@
             </Box>
             <Box class="title flex justify-center m-2 text-center ">
                 <div class="btn">
-                    <a class="p-1" :href="route('admin.guild.create')">Utwórz Guild</a>
+                    <Link class="p-1" as="button" type="button" :href="route('admin.guild.create')">Utwórz Guild</Link>
                 </div>
                 <div class="btn">
-                    <a class="p-1" :href="route('admin.user.create')">Utwórz User</a>
+                    <Link class="p-1" as="button" type="button" :href="route('admin.user.create')">Utwórz User</Link>
                 </div>
             </Box>
             <Box class="title flex justify-center m-2 text-center ">
                 <div class="btn">
-                    <a class="text-sm" :href="route('admin.user.list')">Lista użytkowników</a>
+                    <Link class="p-1" as="button" type="button" :href="route('admin.user.list')">Lista użytkowników</Link>
                 </div>
                 <div class="btn">
-                   <a class="text-sm" :href="route('admin.user.restoreIndex')">Przywróć użytkownika</a>
+                    <Link class="p-1" as="button" type="button" :href="route('admin.user.restoreIndex')">Przywróć użytkownika</Link>
                 </div>
             </Box>
         </div>
@@ -29,7 +29,8 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Box from "@/Pages/Components/UI/Box.vue";
-import {route} from "ziggy-js";
+import { route } from "ziggy-js";
+import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
     guilds: Array,
