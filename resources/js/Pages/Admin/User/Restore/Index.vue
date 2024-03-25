@@ -2,7 +2,7 @@
     <AppLayout>
         <Box class="w-52 mx-auto">
             <div class="form-group mb-2">
-                <label class="label text-center">User</label>
+                <label class="text-center text">User</label>
                 <select v-model="selectedNickId" class="input">
                     <option class="input" v-for="user in sortedDeletedUsers" :value="user.id">
                         {{ user.name }}
