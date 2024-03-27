@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Guild;
 use App\Models\PlayerSeason;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $latestSeasonId = PlayerSeason::latest('id')->value('season');
 
@@ -20,7 +20,7 @@ class AdminController extends Controller
             ->groupBy('guilds.id', 'guilds.name')
             ->get();
 
-        return inertia('Admin/Index', [
+        return Inertia::render('Admin/Index', [
             'guilds' => $guilds,
             'latestSeasonId' => $latestSeasonId
         ]);

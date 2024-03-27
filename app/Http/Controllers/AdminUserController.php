@@ -3,28 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class AdminUserController extends Controller
 {
-    public function list()
+    public function list(): Response
     {
         $users = User::select(['id', 'name'])->paginate(60)->withQueryString();
-        return inertia('Admin/User/List',
+        return inertia::render('Admin/User/List',
             [
                 'users' => $users
             ]);
     }
 
-    public function create()
+    public function create(): Response
     {
-        return inertia('Admin/User/Create');
+        return Inertia::render('Admin/User/Create');
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request, User $user): RedirectResponse
     {
         if (!auth()->user()->can('updateIsAdmin', $user)) {
             return redirect()->route('admin.index')
@@ -57,14 +62,14 @@ class AdminUserController extends Controller
             ->with('success', 'User ' . $user->name . ' został utworzony.');
     }
 
-    public function edit(User $user)
+    public function edit(User $user): Response
     {
-        return inertia('Admin/User/Edit', [
+        return Inertia::render('Admin/User/Edit', [
             'user' => $user
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user): RedirectResponse
     {
         if (!auth()->user()->can('update', $user)) {
             return redirect()->route('admin.index')
@@ -92,7 +97,7 @@ class AdminUserController extends Controller
             ->with('success', 'Dane użytkownika zaktualizowane.');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): Application|Redirector|RedirectResponse
     {
         if (!auth()->user()->can('delete', $user)) {
             return redirect('admin.index')

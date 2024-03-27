@@ -11,6 +11,7 @@
     {
         use HasFactory;
 
+        public mixed $user;
         protected $fillable = ['player_id', 'season', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
 
         public function user(): BelongsTo

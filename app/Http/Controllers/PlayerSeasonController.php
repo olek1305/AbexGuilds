@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Guild;
 use App\Models\PlayerSeason;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 
 class PlayerSeasonController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): Response|ResponseFactory
     {
         $user = Auth::user();
         $isAdminUser = ['is_admin' => $user->is_admin];
@@ -34,7 +38,7 @@ class PlayerSeasonController extends Controller
             ->paginate(70)
             ->withQueryString();
 
-        return inertia('Player/Index',
+        return Inertia::render('Player/Index',
             [
                 'players' => $players,
                 'filters' => $filters,
@@ -44,18 +48,18 @@ class PlayerSeasonController extends Controller
             ]);
     }
 
-    public function create(PlayerSeason $player)
+    public function create(PlayerSeason $player): Response|ResponseFactory
     {
         $users = User::all();
         $guilds = Guild::all();
-        return inertia('Player/Create', [
+        return Inertia::render('Player/Create', [
             'player' => $player,
             'users' => $users,
             'guilds' => $guilds
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         PlayerSeason::create($request->validate([
             'player_id' => 'required',
@@ -70,7 +74,7 @@ class PlayerSeasonController extends Controller
             ->with('success', 'Stworzony player');
     }
 
-    public function update(Request $request, PlayerSeason $player)
+    public function update(Request $request, PlayerSeason $player): RedirectResponse
     {
         if (!auth()->user()->can('update', $player)) {
             abort(403);
@@ -87,23 +91,23 @@ class PlayerSeasonController extends Controller
             ->with('success', 'gracz zaktualizowany');
     }
 
-    public function edit(Request $request, $player_id)
+    public function edit($player_id): Response|ResponseFactory
     {
         $playerSeason = PlayerSeason::with('user', 'guild')->find($player_id);
-        return inertia('Player/Edit',
+        return Inertia::render('Player/Edit',
             [
                 'player' => $playerSeason
             ]);
     }
 
-    public function destroy(PlayerSeason $player)
+    public function destroy(PlayerSeason $player): RedirectResponse
     {
         $player->deleteOrFail();
         return redirect()->route('player.index')
             ->with('success', 'Gracz: ' . $player->user->name  . ' zostal usuniety');
     }
 
-    public function transfer(Request $request, PlayerSeason $player)
+    public function transfer(Request $request, PlayerSeason $player): RedirectResponse
     {
         $request->validate([
             'guild_id' => 'required|exists:guilds,id'

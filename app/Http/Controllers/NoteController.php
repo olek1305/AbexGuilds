@@ -5,41 +5,45 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\PlayerSeason;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class NoteController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $notes = Note::with('user')->orderBy('id', 'desc')->paginate(10);
 
-        return inertia('Note/Index',
+        return Inertia::render('Note/Index',
             [
                 'notes' => $notes,
 
             ]);
     }
 
-    public function show($id)
+    public function show($id): Response|ResponseFactory
     {
         $user = User::findOrFail($id);
         $notes = $user->notes()->paginate(10);
-        return inertia('Note/Show', [
+        return Inertia::render('Note/Show', [
             'user' => $user,
             'notes' => $notes,
         ]);
     }
 
-    public function create()
+    public function create(): Response
     {
         $users = User::all();
 
-        return inertia('Note/Create', [
+        return Inertia::render('Note/Create', [
             'users' => $users
         ]);
     }
 
-    public function store(Request $request, PlayerSeason $player)
+    public function store(Request $request, PlayerSeason $player): RedirectResponse
     {
         if (!auth()->user()->can('update', $player)) {
             abort(403);
@@ -55,14 +59,14 @@ class NoteController extends Controller
             ->with('success', 'Stworzony notatnik');
     }
 
-    public function edit(Note $note)
+    public function edit(Note $note): Response
     {
-        return Inertia('Note/Edit', [
+        return Inertia::render('Note/Edit', [
             'note' => $note
         ]);
     }
 
-    public function update(Note $note, Request $request)
+    public function update(Note $note, Request $request): RedirectResponse
     {
 
         $validatedData = $request->validate([
@@ -75,7 +79,7 @@ class NoteController extends Controller
         return redirect()->route('notes.index')->with('success', 'Note updated!');
     }
 
-    public function destroy(Note $note)
+    public function destroy(Note $note): RedirectResponse
     {
         $note->deleteOrFail();
         return redirect()->route('notes.index')
