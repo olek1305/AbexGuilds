@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminUserRestoreController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PlayerSeasonController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +35,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'update' => 'note.update',
             'destroy' => 'note.destroy'
         ]);
+    Route::get('/stats/{season?}', [StatsController::class, 'index'])->name('stats.index');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::patch('/players/{player}/transfer', [PlayerSeasonController::class, 'transfer'])->name('players.transfer');
 
