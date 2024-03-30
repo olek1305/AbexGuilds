@@ -30,6 +30,9 @@ class PlayerSeasonController extends Controller
 
         $players = PlayerSeason::query()
             ->with('user', 'guild')
+            ->whereHas('user', function($query) {
+                $query->whereNull('deleted_at');
+            })
             ->latestGuildId()
             ->firstIsObserver()
             ->latestIsStar()
@@ -104,7 +107,7 @@ class PlayerSeasonController extends Controller
     {
         $player->deleteOrFail();
         return redirect()->route('player.index')
-            ->with('success', 'Gracz: ' . $player->user->name  . ' zostal usuniety');
+            ->with('success', 'Gracz: zostal usuniety');
     }
 
     public function transfer(Request $request, PlayerSeason $player): RedirectResponse
@@ -118,7 +121,7 @@ class PlayerSeasonController extends Controller
         ]);
 
         return redirect()->route('player.index')
-            ->with('success', 'Gracz: ' . $player->user->name . 'został przeniesiony do innej gildii');
+            ->with('success', 'Gracz został przeniesiony do innej gildii');
     }
 }
 
