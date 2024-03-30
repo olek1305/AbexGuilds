@@ -17,7 +17,7 @@
             </Box>
             <Box class="title flex justify-center m-2 text-center ">
                 <div class="btn">
-                    <Link class="p-1" as="button" type="button" :href="route('admin.user.list')">Lista użytkowników</Link>
+                    <Link class="p-1" as="button" type="button" :href="route('admin.user.index')">Lista użytkowników</Link>
                 </div>
                 <div class="btn">
                     <Link class="p-1" as="button" type="button" :href="route('admin.user.restoreIndex')">Przywróć użytkownika</Link>

@@ -11,7 +11,7 @@
                 <transition name="confirmation">
                     <div>
                         <h2 class="text-lg font-bold mb-2 dark:text-white">Are you sure?</h2>
-                        <button class="bg-red-500 hover:bg-gray-300 textbtn" @click="deletePlayer(props.user)">Yes</button>
+                        <button class="bg-red-500 hover:bg-gray-300 textbtn" @click="kickUser(props.user)">Yes</button>
                         <button class="bg-blue-500 hover:bg-gray-300 textbtn" @click="showConfirmation = false">No</button>
                     </div>
                 </transition>
@@ -39,8 +39,8 @@ const editPlayer = (user) => {
     router.get(route('admin.user.edit', { user: user.id }));
 }
 
-const deletePlayer = (user) => {
-    router.delete(route('admin.user.destroy', { user: user }));
+const kickUser = (user) => {
+    router.delete(route('admin.user.destroy', { user: user.id }));
     emit('close');
 }
 

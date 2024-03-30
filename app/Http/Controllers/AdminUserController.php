@@ -15,10 +15,10 @@ use Inertia\Response;
 
 class AdminUserController extends Controller
 {
-    public function list(): Response
+    public function index(): Response
     {
         $users = User::select(['id', 'name'])->paginate(60)->withQueryString();
-        return inertia::render('Admin/User/List',
+        return Inertia::render('Admin/User/Index',
             [
                 'users' => $users
             ]);
@@ -97,16 +97,21 @@ class AdminUserController extends Controller
             ->with('success', 'Dane użytkownika zaktualizowane.');
     }
 
-    public function destroy(User $user): Application|Redirector|RedirectResponse
+    public function destroy(User $user, Request $request): RedirectResponse
     {
-        if (!auth()->user()->can('delete', $user)) {
-            return redirect('admin.index')
-                ->with('error', 'Brak uprawnień do usunięcia użytkownika');
+        if ($request->get('action') === 'ban') {
+            if ($request->has('uuid')) {
+                $user->uuid = $request->get('uuid');
+                $user->save();
+                $user->delete();
+            }
         }
 
-        $user->delete();
+        if ($request->get('action') === 'kick') {
+            $user->delete();
+        }
 
-        return redirect()->route('admin.index')
-            ->with('success', 'User ' . $user->name . ' został usunięty.');
+        return redirect()->route('player.index')
+            ->with('success', 'Done');
     }
 }
