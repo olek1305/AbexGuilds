@@ -43,7 +43,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
         Route::post('guilds/store', [AdminGuildController::class, 'store'])->name('admin.guild.store');
 
-        Route::get('users/list', [AdminUserController::class, 'list'])->name('admin.user.list');
+        Route::get('users/index', [AdminUserController::class, 'index'])->name('admin.user.index');
         Route::get('users/create', [AdminUserController::class, 'create'])->name('admin.user.create');
         Route::post('users/store', [AdminUserController::class, 'store'])->name('admin.user.store');
         Route::put('users/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
