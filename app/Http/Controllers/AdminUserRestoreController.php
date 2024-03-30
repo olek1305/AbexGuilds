@@ -29,7 +29,7 @@ class AdminUserRestoreController extends Controller
         }
 
         $user->restore();
-        return  redirect()->route('admin.index')
+        return redirect()->route('admin.index')
             ->with('success', 'Użytkownika przywrócono');
     }
 }
