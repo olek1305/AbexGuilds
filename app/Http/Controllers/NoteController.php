@@ -49,11 +49,16 @@ class NoteController extends Controller
             abort(403);
         }
 
-        Note::create($request->validate([
+        $note = Note::create($request->validate([
             'user_id' => 'required',
             'title' => 'required|max:255',
-            'body' => 'required|string|max:255'
+            'body' => 'required|string|max:255',
+            'signature' => 'string'
         ]));
+
+        $user = auth()->user();
+        $note->signature = $note->signature ? $note->signature . "\n" . $user->name : $user->name;
+        $note->save();
 
         return redirect()->route('notes.index')
             ->with('success', 'Stworzony notatnik');
@@ -72,8 +77,11 @@ class NoteController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'nullable|string',
+            'signature' => 'string'
         ]);
 
+        $user = auth()->user();
+        $note->signature = $note->signature ? $note->signature . "\n" . $user->name : $user->name;
         $note->update($validatedData);
 
         return redirect()->route('notes.index')->with('success', 'Note updated!');

@@ -15,6 +15,7 @@ class Note extends Model
         'user_id',
         'title',
         'body',
+        'signature'
     ];
 
     protected $casts = [

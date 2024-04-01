@@ -5,6 +5,7 @@
             <div class="text font-bold">User: {{ note.user.name }} </div>
             <p class="text">Powód: {{ props.note.title }}</p>
             <p class="text" v-html="props.note.body"></p>
+            <p class="text-sm dark:text-white">By: {{ props.note.signature }}</p>
             <div class="flex justify-center">
                 <Link class="btn ml-2 flex-grow hover:bg-gray-300 text-center" :href="route('note.edit', { note: props.note.id })">Edit</Link>
                 <a class="btn ml-2 flex-grow hover:bg-gray-300 text-center cursor-pointer" @click="deleteNote">Delete</a>
@@ -16,6 +17,7 @@
             <p class="text-red-600 font-bold">Użytkownik usunięty</p>
             <p class="text">Powód: {{ props.note.title }}</p>
             <p class="text" v-html="props.note.body"></p>
+            <p class="text-sm dark:text-white">By: {{ props.note.signature }}</p>
         </Box>
     </div>
 </template>
