@@ -52,8 +52,20 @@
                     <table class="table-auto text">
                         <thead class=" text uppercase bg-gray-50 dark:bg-gray-700 ">
                             <tr class="text-2xl text-center">
+                                <td :class="colorColumn(1)" class="w-24">Users</td>
+                                <td :class="colorColumn(0)" class="w-24">{{ totalUsers }}</td>
+                            </tr>
+                            <tr class="text-2xl text-center">
                                 <td :class="colorColumn(1)" class="w-24">Notatnik</td>
-                                <td :class="colorColumn(0)" class="w-24">{{ total_notes }}</td>
+                                <td :class="colorColumn(0)" class="w-24">{{ totalNotes }}</td>
+                            </tr>
+                            <tr class="text-2xl text-center">
+                                <td :class="colorColumn(1)" class="w-24">Kick</td>
+                                <td :class="colorColumn(0)" class="w-24">{{ totalKick }}</td>
+                            </tr>
+                            <tr class="text-2xl text-center">
+                                <td :class="colorColumn(1)" class="w-24">Ban</td>
+                                <td :class="colorColumn(0)" class="w-24">{{ totalBan }}</td>
                             </tr>
                         </thead>
                     </table>
@@ -72,7 +84,10 @@ import { computed } from "vue";
 const props = defineProps({
     seasons: Array,
     guilds: Array,
-    total_notes: Number,
+    totalNotes: Number,
+    totalUsers: Number,
+    totalKick: Number,
+    totalBan: Number,
     selectedSeason: Number,
     columnIndex: Number
 });

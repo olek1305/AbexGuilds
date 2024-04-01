@@ -6,13 +6,14 @@ use App\Models\Guild;
 use App\Models\Note;
 use App\Models\PlayerSeason;
 use App\Models\Stats;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class StatsController extends Controller
 {
-    public function index(Request $request, $season = null): Response
+    public function index($season = null): Response
     {
         $guilds = Guild::with([
             'players' => function($query) use ($season) {
@@ -39,11 +40,19 @@ class StatsController extends Controller
         $notes = Note::all();
         $totalNotes = $notes->count();
 
+        $totalUsers = User::count();
+        $totalKick = User::whereNotNull('deleted_at')->withTrashed()->count();
+        $totalBan = User::whereNotNull('deleted_at')->whereNotNull('uuid')->withTrashed()->count();
+
+
         return Inertia::render('Stats/Index', [
             'guilds' => $guilds,
             'seasons' => PlayerSeason::distinct()->pluck('season'),
             'selectedSeason' => (int) $season,
-            'total_notes' => $totalNotes
+            'totalNotes' => $totalNotes,
+            'totalUsers' => $totalUsers,
+            'totalKick' => $totalKick,
+            'totalBan' => $totalBan,
         ]);
     }
 }
