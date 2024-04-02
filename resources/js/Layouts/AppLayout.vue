@@ -64,6 +64,9 @@ const flashError = computed(
                                 <NavLink :href="route('stats.index')" :active="route().current('stats.index')">
                                     Stats
                                 </NavLink>
+                                <NavLink :href="route('activity.index')" :active="route().current('activity.index')">
+                                    Activity
+                                </NavLink>
                             </div>
                         </div>
 
@@ -151,6 +154,9 @@ const flashError = computed(
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('stats.index')" :active="route().current('stats.index')">
                             Stats
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('activity.index')" :active="route().current('activity.index')">
+                            Activity
                         </ResponsiveNavLink>
                     </div>
 
