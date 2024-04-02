@@ -12,14 +12,11 @@
                     </Box>
                     <div class="overflow-x-auto">
                         <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr class="text-xl">
+                            <tr class="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <th class="text-center" v-for="(column, index) in columns" :key="index">
                                     {{ column }}
                                 </th>
                             </tr>
-                            </thead>
-                            <tbody>
                                 <Player
                                     v-for="(player, index) in players.data"
                                     :key="player.id"
@@ -27,7 +24,6 @@
                                     :columnIndex="index"
                                     :guilds="guilds"
                                 />
-                            </tbody>
                         </table>
                     </div>
                 </div>
