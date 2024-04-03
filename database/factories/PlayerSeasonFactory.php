@@ -27,6 +27,15 @@ class PlayerSeasonFactory extends Factory
             'guild_id' => $this->faker->numberBetween(1, 5),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'activities' => json_encode([
+                'Saturday' => mt_rand(0, 1),
+                'Sunday' => mt_rand(0, 1),
+                'Monday' => mt_rand(0, 1),
+                'Tuesday' => mt_rand(0, 1),
+                'Wednesday' => mt_rand(0, 1),
+                'FailFarm' => mt_rand(0, 1),
+                'Complete' => mt_rand(0, 1)
+            ]),
         ];
     }
 }

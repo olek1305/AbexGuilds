@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminSeasonController;
 use App\Http\Controllers\AdminUserController;
@@ -38,6 +39,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/stats/{season?}', [StatsController::class, 'index'])->name('stats.index');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::patch('/players/{player}/transfer', [PlayerSeasonController::class, 'transfer'])->name('players.transfer');
+    Route::resource('/activity', ActivityController::class)
+        ->names([
+            'index' => 'activity.index',
+            'store' => 'activity.store',
+            'update' => 'activity.update'
+        ])->except(['create', 'edit', 'show', 'destroy']);
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
