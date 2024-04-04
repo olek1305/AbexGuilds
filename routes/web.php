@@ -42,9 +42,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('/activity', ActivityController::class)
         ->names([
             'index' => 'activity.index',
-            'store' => 'activity.store',
+            'show' => 'activity.show',
             'update' => 'activity.update'
-        ])->except(['create', 'edit', 'show', 'destroy']);
+        ])->except(['create', 'edit', 'destroy', 'store']);
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');

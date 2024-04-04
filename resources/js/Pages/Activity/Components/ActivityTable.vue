@@ -17,7 +17,7 @@
             <tr v-for="(player, index) in players" :key="player.id" class="text-center border-4 dark:border-black">
                 <td :class="colorColumn(index)">{{ player.user.name }}</td>
                 <td @click.prevent="toggleActivity(player, 'Saturday')"
-                    :class="{'bg-red-700 text-white': player.activities.Saturday === 0, 'bg-green-400 text-black': player.activities.Saturday === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Saturday === 0, 'bg-green-400 text-black': player.activities.Saturday === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Saturday === 1">
@@ -28,7 +28,7 @@
                     </template>
                 </td>
                 <td @click.prevent="toggleActivity(player, 'Sunday')"
-                    :class="{'bg-red-700 text-white': player.activities.Sunday === 0, 'bg-green-400 text-black': player.activities.Sunday === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Sunday === 0, 'bg-green-400 text-black': player.activities.Sunday === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Sunday === 1">
@@ -39,7 +39,7 @@
                     </template>
                 </td>
                 <td @click.prevent="toggleActivity(player, 'Monday')"
-                    :class="{'bg-red-700 text-white': player.activities.Monday === 0, 'bg-green-400 text-black': player.activities.Monday === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Monday === 0, 'bg-green-400 text-black': player.activities.Monday === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Monday === 1">
@@ -50,7 +50,7 @@
                     </template>
                 </td>
                 <td @click.prevent="toggleActivity(player, 'Tuesday')"
-                    :class="{'bg-red-700 text-white': player.activities.Tuesday === 0, 'bg-green-400 text-black': player.activities.Tuesday === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Tuesday === 0, 'bg-green-400 text-black': player.activities.Tuesday === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Tuesday === 1">
@@ -61,7 +61,7 @@
                     </template>
                 </td>
                 <td @click.prevent="toggleActivity(player, 'Wednesday')"
-                    :class="{'bg-red-700 text-white': player.activities.Wednesday === 0, 'bg-green-400 text-black': player.activities.Wednesday === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Wednesday === 0, 'bg-green-400 text-black': player.activities.Wednesday === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Wednesday === 1">
@@ -83,7 +83,7 @@
                     </template>
                 </td>
                 <td @click.prevent="toggleActivity(player, 'Complete')"
-                    :class="{'bg-red-700 text-white': player.activities.Complete === 0, 'bg-green-400 text-black': player.activities.Complete === 1}"
+                    :class="{'bg-red-600 text-white': player.activities.Complete === 0, 'bg-green-400 text-black': player.activities.Complete === 1}"
                     class="CustomTable"
                 >
                     <template v-if="player.activities.Complete === 1">
@@ -103,7 +103,7 @@
 import 'vue-material-design-icons/styles.css';
 import CheckboxBlank from 'vue-material-design-icons/CheckboxBlank.vue';
 import CheckboxMarked from 'vue-material-design-icons/CheckboxMarked.vue';
-import { ref } from "vue";
+import {computed, ref} from "vue";
 import { Inertia, Link } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
 
@@ -135,7 +135,7 @@ const colorColumn = (index) => index % 2 === 0
 <style scoped>
 
 .CustomTable{
-    @apply border-4 border-black
+    @apply border-2 border-black xl:h-[70px] sm:h-16
 }
 
 </style>

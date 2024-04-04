@@ -19,13 +19,4 @@ class Guild extends Model
     {
         return $this->hasMany(PlayerSeason::class);
     }
-
-    public function scopeFilter(Builder $query, array $filters): Builder
-    {
-        return $query
-            ->when(
-                $filters['name'] ?? false,
-                fn ($query, $value) => $query->where('name', '=', $value)
-            );
-    }
 }
