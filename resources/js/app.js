@@ -1,6 +1,7 @@
 import './bootstrap';
 import '../css/app.css';
 import 'vue-material-design-icons/styles.css';
+import setupLocatorUI from "@locator/runtime";
 
 import { createApp, h } from 'vue';
 import {createInertiaApp, router} from '@inertiajs/vue3';
@@ -13,6 +14,12 @@ import NProgress from 'nprogress'
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 router.on('start', () => NProgress.start());
 router.on('finish', () => NProgress.done());
+
+if (process.env.NODE_ENV === "development") {
+    setupLocatorUI({
+        adapter: "vue"
+    });
+}
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

@@ -1,6 +1,6 @@
 <template>
     <AppLayout>
-        <div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
             <h1 class="title text-center mb-1">Lista użytkowników</h1>
             <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -12,9 +12,9 @@
                 </thead>
                 <tbody>
                     <tr class="text-center hover:border-2 hover:border-black" v-for="(user, index) in users.data" :key="user.id">
-                        <td :class="colorColumn(index)" class="font-normal">{{ user.id }}</td>
-                        <td :class="colorColumn(index)" class="font-normal border-r-2 border-gray-700">{{ user.name }}</td>
-                        <td :class="colorColumn(index)" class="font-normal" @click.stop="selectedUser = user; showModal = true">Edit</td>
+                        <td :class="colorColumn(index)" class="font-normal border-r-2 border-b-2 border-gray-700">{{ user.id }}</td>
+                        <td :class="colorColumn(index)" class="font-normal border-r-2 border-b-2 border-gray-700">{{ user.name }}</td>
+                        <td :class="colorColumn(index)" class="font-normal border-b-2 border-gray-700 hover:bg-gray-300 font-semibold cursor-pointer" @click.stop="selectedUser = user; showModal = true">Edit</td>
                         <ActionModal :user="selectedUser" :show-modal="showModal" :column-index="props.columnIndex" @close="showModal = false" />
                     </tr>
                 </tbody>
