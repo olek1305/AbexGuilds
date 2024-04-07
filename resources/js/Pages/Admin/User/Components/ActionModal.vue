@@ -40,7 +40,7 @@ const editPlayer = (user) => {
 }
 
 const kickUser = (user) => {
-    router.delete(route('admin.user.destroy', { user: user.id }));
+    router.delete(route('admin.user.destroy', { user: user.id, action: "kick" }));
     emit('close');
 }
 
