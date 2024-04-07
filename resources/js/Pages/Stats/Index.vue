@@ -5,14 +5,14 @@
                 Listy do wyboru sezon
                 <div class="grid justify-center">
 
-                <select v-model="form.selectedSeason" class="input border">
+                <select v-model="form.selectedSeason" class="input w-48 mx-auto">
                     <option :value="null" hidden>Sezon</option>
                     <option v-for="season in sortedSeasons" :key="season" :value="season">
                         {{ season }}
                     </option>
                 </select>
 
-                <button class="btn" @click="submit">Zastosuj</button>
+                <button class="btn mx-auto" @click="submit">Zastosuj</button>
 
                 </div>
                 <div v-if="guilds.length > 0">
