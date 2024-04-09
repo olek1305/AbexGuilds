@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbexSheetController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminSeasonController;
@@ -45,6 +46,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'show' => 'activity.show',
             'update' => 'activity.update'
         ])->except(['create', 'edit', 'destroy', 'store']);
+
+    Route::get('/excel', [AbexSheetController::class, 'index']);
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
