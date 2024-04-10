@@ -67,6 +67,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function playerSeasons()
+    {
+        return $this->hasMany(PlayerSeason::class, 'player_id');
+    }
+
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class, 'user_id');
