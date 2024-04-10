@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Edit user">
         <div>
             <h1 class="title text-center m-2">Edycja użytkownika</h1>
             <form @submit.prevent="onSubmit">

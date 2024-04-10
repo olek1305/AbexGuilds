@@ -1,5 +1,5 @@
 <template>
-    <AppLayout title="Create Player">
+    <AppLayout title="Edit the note">
         <form class="max-w-md mx-auto" @submit.prevent="update">
             <div class="text-center title">
                 <div class="text-center">

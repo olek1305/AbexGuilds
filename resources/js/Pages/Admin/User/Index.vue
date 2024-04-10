@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="List of users">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
             <h1 class="title text-center mb-1">Lista użytkowników</h1>
             <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">

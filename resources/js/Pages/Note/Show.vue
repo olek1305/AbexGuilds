@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Show note">
         <h2 class="title text-center">Notatnik użytkownika: {{ user.name }}</h2>
         <div v-if="notes.data.length > 0" class="grid gap-4 sizeSmall sizeBig">
             <Note

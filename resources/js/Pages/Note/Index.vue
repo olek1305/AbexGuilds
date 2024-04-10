@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Index notes">
         <div class="flex justify-center m-1">
             <Link class="flex btn justify-center w-52" :href="route('note.create')">Utwórz Notatnik</Link>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Stats">
         <div>
             <Box class="text grid justify-center text-center">
                 Listy do wyboru sezon

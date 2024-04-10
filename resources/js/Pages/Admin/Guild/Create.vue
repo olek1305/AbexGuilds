@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Create a guild">
         <form class="grid grid-cols-subgrid justify-center" @submit.prevent="create" method="POST">
                 <div class="form-group title">
                     <label for="name" class="grid justify-center">Nazwa gildia</label>

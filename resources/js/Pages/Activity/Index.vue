@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Activity - Index">
         <Box class="mx-auto w-52 grid justify-center mb-4">
             <form @submit.prevent="filter" class="grid justify-center">
                 <select v-model.number="filterForm.guild_id" class="input w-48 mx-auto">

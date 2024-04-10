@@ -1,5 +1,5 @@
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Players">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
             <Box class="rounded-b-none">
                 <div v-if="isAdminUser" class="flex justify-center m-1">

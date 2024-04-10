@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Index excel">
         <div v-if="sheetID">
             <Box class="flex justify-center text-center mb-2">
                 <div>

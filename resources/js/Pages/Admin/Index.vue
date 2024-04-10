@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Admin panel">
         <div>
             <Box class="title flex justify-center m-2 text-center ">
                 <div class="btn">

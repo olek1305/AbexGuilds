@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Create user">
         <form class="grid grid-cols-subgrid justify-center title" @submit.prevent="create">
                 <div class="form-group">
                     <label for="name" class="grid justify-center">User</label>

@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Show excel">
         <Box class="mx-auto text-center overflow-x-auto">
             <p class="text">ONLY READ</p>
             <table class="table-auto text-2xl w-full text-left text-gray-500 dark:text-gray-400">
