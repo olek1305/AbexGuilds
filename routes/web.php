@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminUserRestoreController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\ExcelUsersController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PlayerSeasonController;
 use App\Http\Controllers\AdminController;
@@ -47,6 +48,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::resource('excel', ExcelController::class)->except(['edit', 'update', 'destroy']);
     Route::get('excel/{sheetName}', [ExcelController::class, 'show'])->name('excel.show');
+    Route::post('excel/users', [ExcelUsersController::class, 'store'])->name('excel.store');
+
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');

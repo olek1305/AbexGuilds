@@ -28,8 +28,6 @@ class ExcelController extends Controller
         $values = Sheets::collection($header, $sheet);
         $data_sheets = array_values($values->ToArray());
 
-
-
         return Inertia::render('Excel/Show', [
             'sheets' => $data_sheets
         ]);
@@ -62,7 +60,4 @@ class ExcelController extends Controller
         $data = Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append($rows);
         return Inertia::location('/excel');
     }
-
-
-
 }
