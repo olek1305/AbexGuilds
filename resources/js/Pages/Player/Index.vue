@@ -1,6 +1,6 @@
 <template>
     <AppLayout title="Players">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-2">
             <Box class="rounded-b-none">
                 <div v-if="isAdminUser" class="flex justify-center m-1">
                     <Link class="flex btn justify-center w-52" :href="route('player.create')">Utwórz gracza</Link>
@@ -25,8 +25,8 @@
                 </table>
             </div>
         </div>
-        <div v-if="players.data.length" class="w-full flex justify-center mt-4 mb-4 dark:text-gray-400">
-            <Pagination :links="players.links"/>
+        <div v-if="players.data.length" class="w-full flex justify-center mt-4 mb-4 dark:text-gray-400 ">
+            <Pagination class="border-b border-gray-900 dark:border-sky-500 title" :links="players.links"/>
         </div>
     </AppLayout>
 </template>

@@ -1,9 +1,9 @@
 <template>
     <AppLayout title="Stats">
         <div>
-            <Box class="text grid justify-center text-center">
+            <Box class="text grid justify-center text-center mb-2">
                 Listy do wyboru sezon
-                <div class="grid justify-center">
+                <div class="grid justify-center mb-2">
 
                 <select v-model="form.selectedSeason" class="input w-48 mx-auto">
                     <option :value="null" hidden>Sezon</option>

@@ -1,17 +1,17 @@
 <template>
     <AppLayout title="Index notes">
-        <div class="flex justify-center m-1">
+        <div class="flex justify-center mb-2">
             <Link class="flex btn justify-center w-52" :href="route('note.create')">Utwórz Notatnik</Link>
         </div>
-        <p class="title text-center mb-1 border-t-2 border-l-2 border-r-2 border-sky-500">Niedawno notatnik</p>
+        <p class="title text-center mb-1 rounded border-t border-l border-r dark:border-sky-500 border-gray-900">Niedawno notatnik</p>
         <div class="grid gap-4 sizeSmall sizeBig">
             <Note
                 v-for="note in notes.data"
                 :key="note.id" :note="note"
             />
         </div>
-        <div v-if="notes.data.length" class="w-full flex justify-center mt-4 mb-4 title">
-            <Pagination :links="notes.links"/>
+        <div v-if="notes.data.length" class="w-full flex justify-center mt-4 mb-4 dark:text-gray-400">
+            <Pagination class="border-b border-gray-900 dark:border-sky-500 title" :links="notes.links"/>
         </div>
     </AppLayout>
 </template>
