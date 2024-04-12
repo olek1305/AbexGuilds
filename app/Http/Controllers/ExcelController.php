@@ -25,11 +25,13 @@ class ExcelController extends Controller
 
         $sheet = Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->get();
         $header = $sheet->pull(0);
-        $values = Sheets::collection($header, $sheet);
-        $data_sheets = array_values($values->ToArray());
+        $data = $sheet->all();
+
+        array_shift($data);
 
         return Inertia::render('Excel/Show', [
-            'sheets' => $data_sheets
+            'nameColumns' => $header,
+            'data_sheets' => $data
         ]);
     }
 

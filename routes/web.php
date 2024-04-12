@@ -46,7 +46,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'update' => 'activity.update'
         ])->except(['create', 'edit', 'destroy', 'store']);
 
-    Route::resource('excel', ExcelController::class)->except(['edit', 'update', 'destroy']);
+    Route::resource('excel', ExcelController::class)->except(['edit', 'update', 'destroy', 'show']);
     Route::get('excel/{sheetName}', [ExcelController::class, 'show'])->name('excel.show');
     Route::post('excel/users', [ExcelUsersController::class, 'store'])->name('excel.store');
 
