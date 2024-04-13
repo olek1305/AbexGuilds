@@ -38,7 +38,7 @@ let filterTimeout = null;
 const filter = () => {
     clearTimeout(filterTimeout);
     filterTimeout = setTimeout(() => {
-        Inertia.get(route('activity.show', { activity: filterForm.guild_id }), {
+        filterForm.get(route('activity.show', { activity: filterForm.guild_id }), {
             onSuccess: () => { console.log('Request successful') },
             onError: () => { console.log('Request error') },
         });

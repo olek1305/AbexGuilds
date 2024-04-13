@@ -11,12 +11,14 @@
 <script setup>
 import Box from "@/Pages/Components/UI/Box.vue";
 import { ref } from "vue";
-import { Inertia } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
+import { useForm } from "@inertiajs/vue3";
 
 const sheetNameSend = ref('');
 
+const form = useForm({})
+
 const sendSheetName = () => {
-    Inertia.post(route('excel.store'), {sheetName: sheetNameSend.value});
+    form.post(route('excel.store'), {sheetName: sheetNameSend.value});
 };
 </script>

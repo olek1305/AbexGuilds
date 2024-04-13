@@ -15,10 +15,13 @@ import Box from "@/Pages/Components/UI/Box.vue";
 import { ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
+import {useForm} from "@inertiajs/vue3";
 
 const sheetNameLoad = ref('');
 
+const form = useForm({})
+
 const loadSheetName = (sheetName) => {
-    Inertia.get(route('excel.show', {sheetName: sheetName}));
+    form.get(route('excel.show', {sheetName: sheetName}));
 }
 </script>

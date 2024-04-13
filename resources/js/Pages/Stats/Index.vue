@@ -80,6 +80,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Box from "@/Pages/Components/UI/Box.vue";
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed } from "vue";
+import { route } from "ziggy-js";
 
 const props = defineProps({
     seasons: Array,
@@ -96,7 +97,7 @@ const form = useForm({
     selectedSeason: props.selectedSeason
 })
 const submit = () => {
-    form.get(`/stats/${form.selectedSeason}`);
+    form.get(route('stats.index', { season: form.selectedSeason }));
 }
 
 const filteredGuilds = computed(() => {

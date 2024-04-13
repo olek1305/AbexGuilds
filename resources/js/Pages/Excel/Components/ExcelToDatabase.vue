@@ -12,13 +12,15 @@
 <script setup>
 import Box from "@/Pages/Components/UI/Box.vue";
 import { ref } from "vue";
-import { Inertia } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
+import {useForm} from "@inertiajs/vue3";
 
 const sheetNameForColumn = ref('');
 const columnName = ref('');
 
+const form = useForm({})
+
 const sendColumnName = (columnName, sheetName) => {
-    Inertia.post(route('excel.store', {columnName: columnName.value, sheetName: sheetNameForColumn.value}))
+    form.post(route('excel.store', {columnName: columnName.value, sheetName: sheetNameForColumn.value}))
 }
 </script>
