@@ -23,7 +23,6 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Box from "@/Pages/Components/UI/Box.vue";
 import { useForm } from "@inertiajs/vue3";
 import { route } from "ziggy-js";
-import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
     guilds: Object,
