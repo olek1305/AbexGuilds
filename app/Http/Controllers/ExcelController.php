@@ -18,7 +18,7 @@ class ExcelController extends Controller
         ]);
     }
 
-    //Read from sheet to web
+    //Reading from Excel for rendering on the web
     public function show($sheetName)
     {
         $spreadsheetId = env('SPREADSHEET_ID');
@@ -35,7 +35,7 @@ class ExcelController extends Controller
         ]);
     }
 
-    //Create Sheet and copy from database to excel
+    //Copy Users from database for rendering on the excel
     public function store(Request $request)
     {
         $spreadsheetId = env('SPREADSHEET_ID');
