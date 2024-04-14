@@ -7,7 +7,7 @@
                     <option v-for="(guild, index) in guilds" :key="index.id" :value="guild.id">{{ guild.name }}</option>
                 </select>
                 <div>
-                    <button type="submit" class="grid btn justify-center w-48">Filter</button>
+                    <button type="submit" :disabled="!filterForm.guild_id" class="grid btn justify-center w-48">Filter</button>
                 </div>
             </form>
         </Box>

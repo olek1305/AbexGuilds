@@ -3,7 +3,7 @@
         <p class="title pb-2">Kopiowanie użytkowników z bazy danych do renderowania w Excelu</p>
         <div class="grid justify-center">
             <input v-model="sheetNameSend" type="text" placeholder="Nazwa sheet">
-            <button @click="sendSheetName" class="text p-2 btn">Wyślij</button>
+            <button @click="sendSheetName" :disabled="!sheetNameSend" class="text p-2 btn">Wyślij</button>
         </div>
     </Box>
 </template>

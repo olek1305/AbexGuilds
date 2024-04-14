@@ -4,7 +4,7 @@
             <p class="title pb-2">Odczyt z Excela do renderowania w sieci</p>
             <div class="grid justify-center">
                 <input v-model="sheetNameLoad" type="text" placeholder="Nazwa sheet">
-                <button @click="loadSheetName(sheetNameLoad)" class="text p-2 btn">Wyslij</button>
+                <button @click="loadSheetName(sheetNameLoad)" :disabled="!sheetNameLoad" class="text p-2 btn">Wyslij</button>
             </div>
         </div>
     </Box>

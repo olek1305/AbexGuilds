@@ -4,7 +4,7 @@
         <div>
             <input v-model="columnName" type="text" placeholder="Nazwa kolumna">
             <input v-model="sheetNameForColumn" type="text" placeholder="Nazwa sheet">
-            <button @click="sendColumnName" class="text p-2 btn">Wyślij</button>
+            <button @click="sendColumnName" :disabled="!columnName || !sheetNameForColumn" class="text p-2 btn">Wyślij</button>
         </div>
     </Box>
 </template>

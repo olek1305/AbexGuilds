@@ -12,7 +12,7 @@
                     </option>
                 </select>
 
-                <button class="btn mx-auto" @click="submit">Zastosuj</button>
+                <button class="btn mx-auto" :disabled="!form.selectedSeason" @click="submit">Zastosuj</button>
 
                 </div>
                 <div v-if="guilds.length > 0">
