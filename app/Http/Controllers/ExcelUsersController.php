@@ -17,6 +17,7 @@ class ExcelUsersController extends Controller
         return Inertia::render('Excel/Create');
     }
 
+    //Copying users from Excel to save in the database
     public function store(Request $request)
     {
         $spreadsheetId = env('SPREADSHEET_ID');
