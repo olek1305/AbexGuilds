@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminUserRestoreController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\ExcelSaveToDatabase;
 use App\Http\Controllers\ExcelUsersController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PlayerSeasonController;
@@ -46,9 +47,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             'update' => 'activity.update'
         ])->except(['create', 'edit', 'destroy', 'store']);
 
-    Route::resource('excel', ExcelController::class)->except(['edit', 'update', 'destroy', 'show']);
+    Route::resource('excel', ExcelController::class)->except(['edit', 'update', 'destroy']);
     Route::get('excel/{sheetName}', [ExcelController::class, 'show'])->name('excel.show');
-    Route::post('excel/users', [ExcelUsersController::class, 'store'])->name('excel.store');
+    Route::post('excel/users', [ExcelUsersController::class, 'store'])->name('excel.store.users');
+    Route::post('excel/users/database/{sheetName}', [ExcelSaveToDatabase::class, 'store'])->name('excel.store.database');
 
 
     Route::prefix('admin')->group(function () {
