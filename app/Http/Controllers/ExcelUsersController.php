@@ -48,6 +48,7 @@ class ExcelUsersController extends Controller
         $countErrors = 0;
 
         foreach ($userNames as $userName) {
+            ini_set('max_execution_time', '350');
             if ($userName) {
                 if (!User::where('name', $userName)->exists()) {
                     $newUser = new User();
@@ -61,6 +62,8 @@ class ExcelUsersController extends Controller
                 }
             }
         }
+        //default set 120
+        ini_set('max_execution_time', '120');
 
         return redirect()->route('excel.index')
             ->with(
