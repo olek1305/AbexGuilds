@@ -8,8 +8,9 @@
             <p class="text-sm dark:text-white">By: {{ props.note.signature }}</p>
             <div class="flex justify-center">
                 <Link class="btn ml-2 flex-grow hover:bg-gray-300 text-center" :href="route('note.edit', { note: props.note.id })">Edit</Link>
-                <a class="btn ml-2 flex-grow hover:bg-gray-300 text-center cursor-pointer" @click="deleteNote">Delete</a>
+                <button class="btn ml-2 flex-grow hover:bg-gray-300 text-center" @click.stop="selectedNote = props.note.id; showModal = true">Delete</button>
             </div>
+            <NoteDeleteModal :note="note" :key="note.id" :show-modal="showModal" @close="showModal = false"/>
         </Box>
 
         <Box v-else class="grid border-red-600 border-2 stripes">
@@ -26,12 +27,15 @@
 import Box from "@/Pages/Components/UI/Box.vue";
 import { route } from "ziggy-js";
 import { Link } from "@inertiajs/vue3";
-import { Inertia } from "@inertiajs/inertia";
+import { ref } from "vue";
+import NoteDeleteModal from "@/Pages/Note/Components/NoteDeleteModal.vue";
 
 const props = defineProps({
     note: Object,
-
 })
+
+let showModal = ref(false);
+let selectedNote = ref(false);
 
 const shortCutData = (data) => {
     if (!data) return '';
