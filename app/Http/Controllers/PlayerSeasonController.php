@@ -21,7 +21,7 @@ class PlayerSeasonController extends Controller
         $isAdminUser = ['is_admin' => $user->is_admin];
 
         $filters = $request->only([
-           'guild_id', 'damageFrom', 'damageTo', 'season'
+           'guild_id', 'damageFrom', 'damageTo', 'season', 'player_name'
         ]);
 
         $guilds = Guild::all();

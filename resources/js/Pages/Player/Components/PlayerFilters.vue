@@ -14,6 +14,8 @@
                 <option :value="null" hidden>Season</option>
                 <option v-for="season in sortedSeasons" :key="season" :value="season">{{ season }}</option>
             </select>
+
+            <input v-model.number="filterForm.player_name" type="text" placeholder="Nick" class="input w-48 placeholder-gray-500 border" />
         </div>
         <div class="mb-2 w-52 flex mr-1">
             <button type="submit" class="flex btn justify-center w-48">Filter</button>
@@ -46,6 +48,7 @@ const filterForm = useForm({
     damageFrom: props.filters.damageFrom ?? null,
     damageTo: props.filters.damageTo ?? null,
     season: props.filters.season ?? null,
+    player_name: props.filters.player_name ?? null,
 })
 
 let filterTimeout = null;
@@ -69,6 +72,7 @@ const clear = () => {
     filterForm.damageFrom = null
     filterForm.damageTo = null
     filterForm.season = null
+    filterForm.player_name = null
     filter()
 }
 

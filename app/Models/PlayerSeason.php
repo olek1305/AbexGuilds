@@ -64,6 +64,9 @@
                 )->when(
                     $filters['season'] ?? false,
                     fn ($query, $value) => $query->where('season', '=', $value)
+                )->when(
+                    $filters['player_name'] ?? false,
+                    fn ($query, $value) => $query->whereHas('user',fn ($query) => $query->where('name', 'LIKE', "%$value%"))
                 );
         }
     }
