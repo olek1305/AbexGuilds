@@ -15,13 +15,12 @@
 </template>
 <script setup>
 import PlayerModal from "@/Pages/Player/Components/PlayerModal.vue";
-import {ref} from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
     player: Object,
-    guilds: Object,
+    guilds: Array,
     columnIndex: Number
-
 });
 
 const colorColumn = (index) => index % 2 === 0
