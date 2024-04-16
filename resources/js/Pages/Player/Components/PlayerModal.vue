@@ -54,7 +54,7 @@
                     <div>
                         <h2 class="text-lg font-bold mb-2 dark:text-white">Are you sure?</h2>
                         <button class="bg-red-500 hover:bg-gray-300 textbtn" @click="deletePlayer(props.player)">Yes</button>
-                        <button class="bg-blue-500 hover:bg-gray-300 textbtn" @click="showConfirmation = false">No</button>
+                        <button class="bg-blue-500 hover:bg-gray-300 textbtn" @click="showDeleteConfirmation = false">No</button>
                     </div>
                 </transition>
             </div>
