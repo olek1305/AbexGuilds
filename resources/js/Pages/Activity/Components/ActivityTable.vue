@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(player, index) in players" :key="player.id" class="text-center border-4 dark:border-black">
+            <tr v-for="(player, index) in sortedPlayers" :key="player.id" class="text-center border-4 dark:border-black">
                 <td :class="colorColumn(index)">{{ player.user.name }}</td>
                 <td @click.prevent="toggleActivity(player, 'Saturday')"
                     :class="{'bg-red-600 text-white': player.activities.Saturday === 0, 'bg-green-400 text-black': player.activities.Saturday === 1}"
@@ -103,15 +103,13 @@
 import 'vue-material-design-icons/styles.css';
 import CheckboxBlank from 'vue-material-design-icons/CheckboxBlank.vue';
 import CheckboxMarked from 'vue-material-design-icons/CheckboxMarked.vue';
-import { ref } from "vue";
+import {computed, ref} from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
 
 const props = defineProps({
     players: Array
 })
-
-const players = ref(props.players);
 
 const toggleActivity = (player, day) => {
     if (player.activities[day] === 0 || player.activities[day] === 1) {
@@ -130,6 +128,21 @@ const updateActivities = (player) => {
 const colorColumn = (index) => index % 2 === 0
     ? 'dark:bg-cyan-300 dark:text-black bg-orange-200 text-black font-normal border-b-2 border-gray-800'
     : 'dark:bg-blue-400 dark:text-zinc-950 bg-amber-400 text-black font-normal border-b-2 border-gray-800';
+
+const sortedPlayers = computed(() => {
+    return props.players.slice().sort((a, b) => {
+        const nameA = a.user.name.toUpperCase();
+        const nameB = b.user.name.toUpperCase();
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+});
+
 </script>
 
 <style scoped>
