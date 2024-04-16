@@ -67,13 +67,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::post('users/{user}/restore', [AdminUserRestoreController::class, 'restore'])->name('admin.user.restore')->withTrashed();
     });
 });
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});
