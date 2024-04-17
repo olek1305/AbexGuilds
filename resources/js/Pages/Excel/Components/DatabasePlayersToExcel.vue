@@ -1,8 +1,9 @@
 <template>
     <Box class="mx-auto text-center mb-2">
-        <p class="title pb-2">Kopiowanie użytkowników z bazy danych do renderowania w Excelu</p>
+        <p class="title pb-2">Kopiowanie players z bazy danych do renderowania w Excelu</p>
         <form @submit.prevent="submit" class="grid justify-center">
             <input v-model="form.sheetName" type="text" placeholder="Nazwa sheet">
+            <input v-model="form.season" type="text" placeholder="season">
             <button type="submit" class="text p-2 btn">Wyślij</button>
         </form>
     </Box>
@@ -14,10 +15,11 @@ import { route } from "ziggy-js";
 import { useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-    sheetName: null
+    sheetName: null,
+    season: null
 })
 
 const submit = () => {
-    form.post(route('excel.store', { sheetName: form.sheetName }));
+    form.post(route('excel.store.players', { sheetName: form.sheetName, id_season: form.season }));
 };
 </script>

@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminGuildController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminUserRestoreController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\ExcelPlayerController;
 use App\Http\Controllers\ExcelSaveToDatabase;
 use App\Http\Controllers\ExcelUsersController;
 use App\Http\Controllers\NoteController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\PlayerSeasonController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [PlayerSeasonController::class, 'index'])->name('player.index')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
 
@@ -51,7 +51,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('excel/{sheetName}', [ExcelController::class, 'show'])->name('excel.show');
     Route::post('excel/users', [ExcelUsersController::class, 'store'])->name('excel.store.users');
     Route::post('excel/users/database/{sheetName}', [ExcelSaveToDatabase::class, 'store'])->name('excel.store.database');
-
+    Route::post('excel/players/', [ExcelPlayerController::class, 'store'])->name('excel.store.players');
 
     Route::prefix('admin')->group(function () {
         Route::get('guilds/create', [AdminGuildController::class, 'create'])->name('admin.guild.create');
