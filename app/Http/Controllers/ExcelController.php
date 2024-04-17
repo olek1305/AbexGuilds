@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -35,8 +36,8 @@ class ExcelController extends Controller
         ]);
     }
 
-    //Copy Users from database for rendering on the excel
-    public function store(Request $request)
+    //Copy Users from database for rendering on the Excel
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'sheetName' => 'required|string'
@@ -69,7 +70,7 @@ class ExcelController extends Controller
         $headers = ['id', 'user_name', 'damage', 'guild', 'is_observer', 'is_star', 'season'];
         Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append([$headers]);
 
-        $data = Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append($rows);
+        Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append($rows);
         return redirect()->route('excel.index')
             ->with(
                 'success', 'Dane zostały pobrane z bazy danych do sheet: ' . $sheetName . ',' . ' w sumie ' . $countUsers . ' users trafiło do excela.'

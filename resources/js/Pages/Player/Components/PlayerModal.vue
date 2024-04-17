@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="name" class="grid justify-center text-center">opcjonalnie</label>
                             <input id="name" v-model="form.uuid" type="text" class="input" placeholder="(wprowadź UUID)"/>
-                            <div v-if="form.errors.email" class="input.error">{{ form.errors.uuid }}</div>
+                            <div v-if="form.errors.uuid" class="input.error">{{ form.errors.uuid }}</div>
                         </div>
                         <button class="bg-red-500 hover:bg-gray-300 textbtn" @click="() => banPlayer(props.player)">Yes</button>
                         <button class="bg-blue-500 hover:bg-gray-300 textbtn" @click="showBanConfirmation = false">No</button>

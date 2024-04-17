@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\PlayerSeason;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Revolution\Google\Sheets\Facades\Sheets;
 
 class ExcelPlayerController extends Controller
 {
-    //Copy Players with season from database for rendering on the excel
-    public function store(Request $request)
+    //Copy Players with season from database for rendering on the Excel
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'sheetName' => 'required|string',
@@ -44,7 +45,7 @@ class ExcelPlayerController extends Controller
         $headers = ['id', 'user_name', 'damage', 'guild', 'is_observer', 'is_star', 'season'];
         Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append([$headers]);
 
-        $data = Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append($rows);
+        Sheets::spreadsheet($spreadsheetId)->sheet($sheetName)->append($rows);
         return redirect()->route('excel.index')
             ->with(
                 'success', 'Dane zostały pobrane z bazy danych do sheet: ' . $sheetName . ',' . ' w sumie ' . $countPlayers . ' players trafiło do excela.'

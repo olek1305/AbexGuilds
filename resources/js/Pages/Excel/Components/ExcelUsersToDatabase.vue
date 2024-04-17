@@ -11,7 +11,6 @@
 
 <script setup>
 import Box from "@/Pages/Components/UI/Box.vue";
-import { ref } from "vue";
 import { route } from "ziggy-js";
 import {useForm} from "@inertiajs/vue3";
 

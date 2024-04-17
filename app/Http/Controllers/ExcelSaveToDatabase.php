@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\PlayerSeason;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Revolution\Google\Sheets\Facades\Sheets;
 
 class ExcelSaveToDatabase extends Controller
 {
     //Copies data from excel to database
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'sheetName' => 'required|string'

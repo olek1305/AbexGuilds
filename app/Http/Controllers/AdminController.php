@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guild;
 use App\Models\PlayerSeason;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 

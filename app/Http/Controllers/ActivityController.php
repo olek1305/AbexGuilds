@@ -22,7 +22,7 @@ class ActivityController extends Controller
         );
     }
 
-    public function show($id, Request $request)
+    public function show($id): Response
     {
         $latestSeasonId = PlayerSeason::latest('id')->value('season');
 

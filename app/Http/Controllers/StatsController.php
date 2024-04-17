@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guild;
 use App\Models\Note;
 use App\Models\PlayerSeason;
-use App\Models\Stats;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 

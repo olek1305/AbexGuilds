@@ -19,7 +19,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Note from "@/Pages/Note/Components/Note.vue";
 import Pagination from "@/Pages/Components/UI/Pagination.vue";
-import {Link, router, useForm} from "@inertiajs/vue3";
+import {Link, useForm} from "@inertiajs/vue3";
 import { route } from "ziggy-js";
 
 const props = defineProps({

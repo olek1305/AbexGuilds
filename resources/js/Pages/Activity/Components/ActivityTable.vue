@@ -103,7 +103,7 @@
 import 'vue-material-design-icons/styles.css';
 import CheckboxBlank from 'vue-material-design-icons/CheckboxBlank.vue';
 import CheckboxMarked from 'vue-material-design-icons/CheckboxMarked.vue';
-import {computed, ref} from "vue";
+import { computed } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { route } from "ziggy-js";
 
