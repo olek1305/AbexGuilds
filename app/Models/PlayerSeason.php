@@ -14,6 +14,11 @@
         public mixed $user;
         protected $fillable = ['player_id', 'season', 'damage', 'is_observer', 'is_star', 'guild_id', 'updated_by'];
 
+        protected $attributes = [
+            'activities' => '{"Saturday":0, "Sunday":0, "Monday":0, "Tuesday":0, "Wednesday":0, "FailFarm":0, "Complete":0}',
+        ];
+
+
         public function user(): BelongsTo
         {
             return $this->belongsTo(User::class, 'player_id');

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->tinyText('signature')->default('');
+            $table->string('signature')->default('');
         });
     }
 
