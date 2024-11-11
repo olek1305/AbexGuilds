@@ -14,7 +14,8 @@
             <ExcelSaveToDatabase />
         </div>
         <div v-else class="text">
-            Prosze ustawic w configu .env, jest podane linka youtube jak ustawic
+            <p>Prosze ustawic w configu .env, jest podane linka youtube jak ustawic</p>
+            <p>You should set in config .env, there is a youtube link given in .env.example how to set up</p>
         </div>
     </AppLayout>
 </template>
